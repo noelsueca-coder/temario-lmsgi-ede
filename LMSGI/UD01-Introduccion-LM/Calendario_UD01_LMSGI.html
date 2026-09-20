@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calendario UD01 LMSGI · 1º ASIX / 1º DAW · Septiembre y Octubre 2026</title>
+
+<style>
+    @page {
+        size: A4 landscape;
+        margin: 8mm;
+    }
+
+    :root {
+        --bg: #eee9f8;
+        --paper: rgba(255,255,255,.92);
+        --text: #34323d;
+        --muted: #777482;
+        --border: #ded9e7;
+
+        --blue: #dcecff;
+        --blue-text: #3d6d9f;
+
+        --green: #dff3e7;
+        --green-text: #427a5a;
+
+        --yellow: #fff0c9;
+        --yellow-text: #927027;
+
+        --red: #f8dede;
+        --red-text: #9b5555;
+
+        --purple: #eadff8;
+        --purple-text: #72539a;
+
+        --gray: #e9e9ed;
+        --gray-text: #62636d;
+
+        --shadow: 0 7px 20px rgba(67, 55, 91, .09);
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+    }
+
+    body {
+        font-family:
+            Inter,
+            ui-sans-serif,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Segoe UI",
+            Roboto,
+            Helvetica,
+            Arial,
+            sans-serif;
+        color: var(--text);
+        background:
+            radial-gradient(circle at 10% 5%, rgba(255,255,255,.85), transparent 30%),
+            radial-gradient(circle at 90% 15%, rgba(218,205,247,.75), transparent 32%),
+            linear-gradient(135deg, #eee9f8 0%, #e8edf8 50%, #f2eaf5 100%);
+        padding: 22px;
+    }
+
+    .planner {
+        width: min(1400px, 100%);
+        margin: 0 auto;
+    }
+
+    .header {
+        background: var(--paper);
+        border: 1px solid rgba(255,255,255,.8);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        padding: 22px 28px 20px;
+        margin-bottom: 18px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header::after {
+        content: "";
+        position: absolute;
+        width: 180px;
+        height: 180px;
+        border-radius: 50%;
+        background: rgba(218, 203, 246, .38);
+        right: -55px;
+        top: -95px;
+    }
+
+    .eyebrow {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 750;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--purple-text);
+        background: var(--purple);
+        border-radius: 999px;
+        padding: 6px 11px;
+        margin-bottom: 8px;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: clamp(24px, 3vw, 38px);
+        line-height: 1.05;
+        letter-spacing: -.035em;
+        font-weight: 800;
+    }
+
+    .subtitle {
+        margin: 7px 0 0;
+        color: var(--muted);
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .note {
+        margin: 10px 0 0;
+        color: var(--purple-text);
+        background: var(--purple);
+        display: inline-block;
+        border-radius: 12px;
+        padding: 6px 12px;
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    .month {
+        background: var(--paper);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(255,255,255,.8);
+        padding: 15px;
+        margin-bottom: 18px;
+        break-inside: avoid;
+    }
+
+    .month-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 2px 12px;
+    }
+
+    .month-title {
+        font-size: 23px;
+        font-weight: 800;
+        letter-spacing: -.025em;
+        margin: 0;
+    }
+
+    .month-number {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        background: var(--purple);
+        color: var(--purple-text);
+        font-size: 13px;
+        font-weight: 800;
+    }
+
+    .weekdays,
+    .days {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 6px;
+    }
+
+    .weekday {
+        text-align: center;
+        padding: 8px 5px;
+        border-radius: 10px;
+        background: #f1edf7;
+        color: #666171;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: .06em;
+        text-transform: uppercase;
+    }
+
+    .day {
+        min-height: 82px;
+        border: 1px solid var(--border);
+        border-radius: 11px;
+        background: rgba(255,255,255,.73);
+        padding: 7px;
+        position: relative;
+        transition: transform .15s ease, box-shadow .15s ease;
+        overflow: hidden;
+    }
+
+    .day:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 15px rgba(70,60,90,.10);
+    }
+
+    .day.empty {
+        background: rgba(246,244,249,.55);
+        border-color: rgba(225,220,233,.65);
+    }
+
+    .date {
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        font-weight: 800;
+        color: #74717c;
+        margin-bottom: 5px;
+    }
+
+    .activity {
+        display: block;
+        border-radius: 8px;
+        padding: 6px 7px;
+        font-size: 10px;
+        line-height: 1.25;
+        font-weight: 700;
+        border: 1px solid transparent;
+        margin-bottom: 4px;
+    }
+
+    .activity .type {
+        display: block;
+        font-size: 8px;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        opacity: .72;
+        margin-bottom: 2px;
+        font-weight: 800;
+    }
+
+    .theory {
+        background: var(--blue);
+        color: var(--blue-text);
+        border-color: #c8def7;
+    }
+
+    .exercise {
+        background: var(--green);
+        color: var(--green-text);
+        border-color: #c8e8d4;
+    }
+
+    .challenge {
+        background: var(--yellow);
+        color: var(--yellow-text);
+        border-color: #f4dfaa;
+    }
+
+    .holiday {
+        background: var(--red);
+        color: var(--red-text);
+        border-color: #efcaca;
+    }
+
+    .presentation {
+        background: var(--purple);
+        color: var(--purple-text);
+        border-color: #ddccef;
+    }
+
+    .review {
+        background: var(--gray);
+        color: var(--gray-text);
+        border-color: #dcdce1;
+    }
+
+    .legend {
+        background: var(--paper);
+        border: 1px solid rgba(255,255,255,.8);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+
+    .legend-title {
+        font-size: 11px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        color: var(--muted);
+    }
+
+    .legend-items {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .legend-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 10px;
+        font-weight: 750;
+    }
+
+    .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .legend-chip.theory .dot { background: #8bb7e5; }
+    .legend-chip.exercise .dot { background: #91c9a7; }
+    .legend-chip.challenge .dot { background: #e2bd63; }
+    .legend-chip.holiday .dot { background: #d89191; }
+    .legend-chip.presentation .dot { background: #ad8bd0; }
+    .legend-chip.review .dot { background: #aaaab4; }
+
+    .totals {
+        background: var(--paper);
+        border: 1px solid rgba(255,255,255,.8);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 15px 20px;
+        margin-top: 18px;
+        font-size: 12px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .totals strong {
+        color: var(--text);
+    }
+
+    .footer-note {
+        color: var(--muted);
+        font-size: 9px;
+        text-align: right;
+        margin-top: 7px;
+    }
+
+    @media (max-width: 900px) {
+        body {
+            padding: 10px;
+        }
+
+        .header {
+            padding: 18px;
+        }
+
+        .month {
+            padding: 10px;
+            overflow-x: auto;
+        }
+
+        .weekdays,
+        .days {
+            min-width: 760px;
+        }
+
+        .legend {
+            align-items: flex-start;
+        }
+    }
+
+    @media print {
+        body {
+            background: white;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .planner {
+            width: 100%;
+        }
+
+        .header {
+            box-shadow: none;
+            margin-bottom: 5mm;
+        }
+
+        .month {
+            box-shadow: none;
+            margin-bottom: 0;
+            page-break-after: always;
+        }
+
+        .month:last-of-type {
+            page-break-after: auto;
+        }
+
+        .day:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .legend, .totals {
+            box-shadow: none;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<main class="planner">
+
+    <header class="header">
+        <span class="eyebrow">Planner académico · Formación Profesional</span>
+        <h1>LMSGI · UD1 INTRODUCCIÓN A LOS LM</h1>
+        <p class="subtitle">1º ASIX · 1º DAW · Septiembre y Octubre 2026</p>
+        <span class="note">RA1 (CA 1a-1i) · Máx. 12h — objetivo real ≈ 7h25min, cierre el 8 de octubre</span>
+    </header>
+
+    <!-- ========================= SEPTIEMBRE ========================= -->
+
+    <section class="month">
+        <div class="month-header">
+            <h2 class="month-title">Septiembre 2026</h2>
+            <span class="month-number">09</span>
+        </div>
+
+        <div class="weekdays">
+            <div class="weekday">Lun</div>
+            <div class="weekday">Mar</div>
+            <div class="weekday">Mié</div>
+            <div class="weekday">Jue</div>
+            <div class="weekday">Vie</div>
+            <div class="weekday">Sáb</div>
+            <div class="weekday">Dom</div>
+        </div>
+
+        <div class="days">
+            <div class="day empty"></div>
+            <div class="day"><span class="date">1</span></div>
+            <div class="day"><span class="date">2</span></div>
+            <div class="day"><span class="date">3</span></div>
+            <div class="day"><span class="date">4</span></div>
+            <div class="day"><span class="date">5</span></div>
+            <div class="day"><span class="date">6</span></div>
+            <div class="day"><span class="date">7</span></div>
+
+            <div class="day"><span class="date">8</span></div>
+            <div class="day"><span class="date">9</span></div>
+            <div class="day"><span class="date">10</span></div>
+            <div class="day"><span class="date">11</span>
+                <div class="activity presentation">
+                    <span class="type">Presentación</span>
+                    Presentación del módulo LMSGI
+                </div>
+            </div>
+            <div class="day"><span class="date">12</span></div>
+            <div class="day"><span class="date">13</span></div>
+            <div class="day"><span class="date">14</span></div>
+
+            <div class="day"><span class="date">15</span>
+                <div class="activity theory">
+                    <span class="type">Teoría</span>
+                    Punto 1 · Qué es un lenguaje de marcas
+                </div>
+            </div>
+            <div class="day"><span class="date">16</span></div>
+            <div class="day"><span class="date">17</span>
+                <div class="activity theory">
+                    <span class="type">Teoría</span>
+                    Punto 2 · Ventajas de los LM
+                </div>
+            </div>
+            <div class="day"><span class="date">18</span>
+                <div class="activity theory">
+                    <span class="type">Teoría</span>
+                    Punto 3 · Origen y clasificación
+                </div>
+            </div>
+            <div class="day"><span class="date">19</span></div>
+            <div class="day"><span class="date">20</span></div>
+            <div class="day"><span class="date">21</span></div>
+
+            <div class="day"><span class="date">22</span>
+                <div class="activity theory">
+                    <span class="type">Teoría</span>
+                    Punto 4.1 · Ámbitos de aplicación de XML
+                </div>
+                <div class="activity exercise">
+                    <span class="type">Ejercicio</span>
+                    Ejercicio 4 · Tu propio icono SVG
+                </div>
+            </div>
+            <div class="day"><span class="date">23</span></div>
+            <div class="day"><span class="date">24</span>
+                <div class="activity holiday">
+                    <span class="type">Festivo</span>
+                    Festivo local
+                </div>
+            </div>
+            <div class="day"><span class="date">25</span>
+                <div class="activity holiday">
+                    <span class="type">Festivo</span>
+                    Festivo local
+                </div>
+            </div>
+            <div class="day"><span class="date">26</span></div>
+            <div class="day"><span class="date">27</span></div>
+            <div class="day"><span class="date">28</span></div>
+
+            <div class="day"><span class="date">29</span>
+                <div class="activity theory">
+                    <span class="type">Teoría</span>
+                    Punto 4.2 · Estructura y sintaxis
+                </div>
+            </div>
+            <div class="day"><span class="date">30</span></div>
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+
+        </div>
+    </section>
+
+    <!-- ========================= OCTUBRE ========================= -->
+
+    <section class="month">
+        <div class="month-header">
+            <h2 class="month-title">Octubre 2026</h2>
+            <span class="month-number">10</span>
+        </div>
+
+        <div class="weekdays">
+            <div class="weekday">Lun</div>
+            <div class="weekday">Mar</div>
+            <div class="weekday">Mié</div>
+            <div class="weekday">Jue</div>
+            <div class="weekday">Vie</div>
+            <div class="weekday">Sáb</div>
+            <div class="weekday">Dom</div>
+        </div>
+
+        <div class="days">
+
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            <div class="day empty"></div>
+            <div class="day"><span class="date">1</span>
+                <div class="activity theory">
+                    <span class="type">Teoría</span>
+                    DTD guiado · catálogo de series
+                </div>
+                <div class="activity exercise">
+                    <span class="type">Ejercicios</span>
+                    Ejercicios 5 y 6 · Haz tu propio XML / De tabla a XML
+                </div>
+            </div>
+            <div class="day"><span class="date">2</span>
+                <div class="activity theory">
+                    <span class="type">Teoría</span>
+                    Punto 4.3 · Documentos bien formados
+                </div>
+                <div class="activity exercise">
+                    <span class="type">Ejercicio</span>
+                    Ejercicio 7 · Bien formado, teoría a práctica
+                </div>
+            </div>
+            <div class="day"><span class="date">3</span></div>
+            <div class="day"><span class="date">4</span></div>
+
+            <div class="day"><span class="date">5</span></div>
+            <div class="day"><span class="date">6</span>
+                <div class="activity theory">
+                    <span class="type">Teoría</span>
+                    Punto 4.4 · Espacios de nombres
+                </div>
+                <div class="activity exercise">
+                    <span class="type">Ejercicio</span>
+                    Ejercicio 8 · Amplía el feed de podcast
+                </div>
+            </div>
+            <div class="day"><span class="date">7</span></div>
+            <div class="day"><span class="date">8</span>
+                <div class="activity review">
+                    <span class="type">Repaso</span>
+                    Resumen de la unidad y cierre UD1
+                </div>
+            </div>
+            <div class="day"><span class="date">9</span>
+                <div class="activity holiday">
+                    <span class="type">Festivo</span>
+                    Día de la Comunitat Valenciana
+                </div>
+            </div>
+            <div class="day"><span class="date">10</span></div>
+            <div class="day"><span class="date">11</span></div>
+
+            <div class="day"><span class="date">12</span></div>
+            <div class="day"><span class="date">13</span>
+                <div class="activity challenge">
+                    <span class="type">Test</span>
+                    Test UD1 (mitad de clase máx.)
+                </div>
+                <div class="activity presentation">
+                    <span class="type">Inicio</span>
+                    Arranca UD2
+                </div>
+            </div>
+            <div class="day"><span class="date">14</span></div>
+            <div class="day"><span class="date">15</span></div>
+            <div class="day"><span class="date">16</span></div>
+            <div class="day"><span class="date">17</span></div>
+            <div class="day"><span class="date">18</span></div>
+
+            <div class="day"><span class="date">19</span></div>
+            <div class="day"><span class="date">20</span></div>
+            <div class="day"><span class="date">21</span></div>
+            <div class="day"><span class="date">22</span></div>
+            <div class="day"><span class="date">23</span></div>
+            <div class="day"><span class="date">24</span></div>
+            <div class="day"><span class="date">25</span></div>
+
+            <div class="day"><span class="date">26</span></div>
+            <div class="day"><span class="date">27</span></div>
+            <div class="day"><span class="date">28</span></div>
+            <div class="day"><span class="date">29</span></div>
+            <div class="day"><span class="date">30</span></div>
+            <div class="day"><span class="date">31</span></div>
+            <div class="day empty"></div>
+
+        </div>
+    </section>
+
+    <!-- ========================= LEYENDA + TOTALES ========================= -->
+
+    <section class="legend">
+        <span class="legend-title">Leyenda</span>
+
+        <div class="legend-items">
+            <span class="legend-chip theory">
+                <span class="dot"></span>
+                Teoría
+            </span>
+
+            <span class="legend-chip exercise">
+                <span class="dot"></span>
+                Ejercicios / práctica
+            </span>
+
+            <span class="legend-chip presentation">
+                <span class="dot"></span>
+                Presentación
+            </span>
+
+            <span class="legend-chip holiday">
+                <span class="dot"></span>
+                Festivo
+            </span>
+
+            <span class="legend-chip review">
+                <span class="dot"></span>
+                Repaso y cierre
+            </span>
+
+            <span class="legend-chip challenge">
+                <span class="dot"></span>
+                Test
+            </span>
+        </div>
+    </section>
+
+    <section class="totals">
+        <span><strong>Sesiones en septiembre</strong> (45 min c/u): 15, 17, 18, 22, 29 → 5 sesiones = 3h 45min</span>
+        <span><strong>Sesiones en octubre</strong> (55 min c/u): 1, 2, 6, 8 → 4 sesiones = 3h 40min</span>
+        <span><strong>Total UD1: 7h 25min</strong> sobre 9 sesiones, cierre el 8 de octubre (máximo permitido: 12h)</span>
+        <span><strong>13 de octubre</strong> (fuera de UD1): test de la unidad (mitad de sesión) + arranque de UD2</span>
+    </section>
+
+    <div class="footer-note">
+        LMSGI · Llenguatges de Marques i Sistemes de Gestió d'Informació · 1º ASIX / 1º DAW · UD1 Introducción a los lenguajes de marcas
+    </div>
+
+</main>
+
+</body>
+</html>
