@@ -23,20 +23,19 @@
 ## Índex
 
 1. El programa i els components del sistema (CA 1a)
-2. El cicle de vida del software: fases del desenvolupament (CA 1b)
-3. Codi font, codi objecte i codi executable (CA 1c)
-4. Codi intermedi i màquines virtuals (CA 1d)
-5. Classificació dels llenguatges de programació (CA 1e)
-6. Eines del desenvolupament de software (CA 1f)
-7. Repte de classe
-8. Resum de la unitat
-9. Per a saber-ne més
+2. El cicle de vida del software: el model clàssic (CA 1b)
+3. Metodologies àgils de desenvolupament (CA 1g)
+4. Codi font, codi objecte i codi executable (CA 1c)
+5. Codi intermedi i màquines virtuals (CA 1d)
+6. Classificació dels llenguatges de programació (CA 1e)
+7. Eines del desenvolupament de software (CA 1f)
+8. Repte de classe
+9. Resum de la unitat
+10. Per a saber-ne més
 
 <div style="page-break-after: always;"></div>
 
-**RA cobert:** RA1 (CA 1a-1f) — Reconeix els elements i les eines que intervenen en el desenvolupament d'un programa informàtic, analitzant les característiques i les fases en què actuen fins a arribar a la seua posada en funcionament.
-
-> ⚠️ **Nota de programació**: el CA 1g (metodologies àgils de desenvolupament de software) **no** es treballa en esta unitat — està assignat a la UP6 (Gestió de projectes informàtics), on l'alumnat ja coneix el cicle de vida i les fases que es presenten ací. El RA1 complet queda programat igualment: 1a-1f ací, 1g en la UP6.
+**RA cobert:** RA1 (CA 1a-1g) — Reconeix els elements i les eines que intervenen en el desenvolupament d'un programa informàtic, analitzant les característiques i les fases en què actuen fins a arribar a la seua posada en funcionament.
 
 > 💡 **Nota d'estudi**: esta unitat dona el vocabulari i els conceptes que usaràs durant tot el curs — quan en UD2 instal·les un IDE o en UD3 faces el teu primer commit, estaràs usant "eines de desenvolupament" tal com es classifiquen ací.
 
@@ -48,7 +47,7 @@
 
 En acabar esta unitat sabràs:
 - Distingir programa, software (per forma i per funció) i explicar com interactuen memòria, processador i perifèrics quan un programa s'executa.
-- Reconèixer les fases del cicle de vida del software (model en cascada) i què produïx cadascuna, junt amb les seues alternatives.
+- Reconèixer les fases del cicle de vida del software (model clàssic en cascada) i quan convé aplicar en son lloc una metodologia àgil (Scrum, Kanban).
 - Diferenciar codi font, objecte, intermedi i executable, i classificar llenguatges de programació i eines de desenvolupament segons la fase a què donen suport.
 
 ---
@@ -159,7 +158,7 @@ En `exercici4.py`, escriu un programa que demane un nom per teclat (`input()`) i
 
 ---
 
-## 2. El cicle de vida del software: fases del desenvolupament (CA 1b)
+## 2. El cicle de vida del software: el model clàssic (CA 1b)
 
 Tot desenvolupament de software recorre, amb més o menys rigor, un conjunt d'etapes conegut com **cicle de vida del software**. El model més clàssic —i el que usarem com a referència per a entendre cada fase— és el **model en cascada**: cada fase es recolza en l'anterior i genera una documentació pròpia, sense començar la següent fins a tancar l'actual.
 
@@ -283,7 +282,7 @@ No. El model en cascada és lineal i rígid — si en Proves apareix una fallada
 | **En espiral** (Boehm) | Combina iteració amb una anàlisi de riscos explícita en cada volta, abans de seguir avançant |
 | **De prototipatge** | Es construïx prompte una versió reduïda i funcional per a validar-la amb el client abans de desenvolupar el sistema complet |
 
-> 📡 **Actualitat**: hui, la gran majoria d'equips de desenvolupament no usa cascada ni estos models clàssics com a forma habitual de treballar, sinó **metodologies àgils** (Scrum, Kanban...) — segons l'informe *State of Agile* de Digital.ai, al voltant del 71% de les organitzacions declara usar-les en el seu cicle de desenvolupament. La cascada seguix sent útil com a model de referència per a entendre quines fases existixen i què produïx cadascuna (que és l'objectiu d'este punt), i encara s'usa en projectes amb requisits molt tancats o molt regulats — però no és representativa de com treballa hui la majoria d'equips. Com funcionen les metodologies àgils en concret es veu en detall en la UP6 (CA 1g).
+> 📡 **Actualitat**: hui, la gran majoria d'equips de desenvolupament no usa cascada ni estos models clàssics com a forma habitual de treballar, sinó **metodologies àgils** (Scrum, Kanban...) — segons l'informe *State of Agile* de Digital.ai, al voltant del 71% de les organitzacions declara usar-les en el seu cicle de desenvolupament. La cascada seguix sent útil com a model de referència per a entendre quines fases existixen i què produïx cadascuna (que és l'objectiu d'este punt), i encara s'usa en projectes amb requisits molt tancats o molt regulats — però no és representativa de com treballa hui la majoria d'equips. Vegem com funcionen estes metodologies àgils, les seues tècniques i quan aplicar-les, en el punt següent.
 
 **🧪 Exercicis de la fase**
 
@@ -298,7 +297,46 @@ Busca el registre de canvis (*changelog* o "novetats d'esta versió") d'una app 
 
 ---
 
-## 3. Codi font, codi objecte i codi executable (CA 1c)
+
+## 3. Metodologies àgils de desenvolupament (CA 1g)
+
+### 3.1. Per què sorgixen: els límits de la cascada
+
+| | Model clàssic (cascada) | Metodologies àgils |
+|---|---|---|
+| Requisits | Es tanquen al principi; canviar alguna cosa a mitjan projecte és costós | S'esperen canvis; es revisen i ajusten en cada iteració |
+| Entrega al client | Una sola vegada, al final del projecte | Parcial i freqüent — cada poques setmanes |
+| Documentació | Extensa i formal (ERS, quadern de càrrega...) | La mínima necessària; el software que funciona pesa més que el paper |
+| Participació del client | Sobretot en Anàlisi i en Proves d'acceptació | En cada iteració, revisant el que s'ha entregat |
+
+En 2001, un grup de desenvolupadors va publicar el **Manifest Àgil**, amb quatre valors que resumixen este canvi d'enfocament: individus i interaccions per damunt de processos i ferramentes; software funcionant per damunt de documentació exhaustiva; col·laboració amb el client per damunt de negociació contractual; respondre al canvi per damunt de seguir un pla rígid. No diu que el segon de cada parell no importe — diu que el primer pesa més quan cal triar.
+
+### 3.2. Tècniques àgils més usades
+
+| | Scrum | Kanban |
+|---|---|---|
+| Ritme de treball | Per *sprints*: blocs tancats d'1 a 4 setmanes | Flux continu, sense blocs de temps fixos |
+| Com s'organitza el treball | *Product backlog* (llista prioritzada de tot el projecte) → *sprint backlog* (el que entra en l'sprint actual) | Tauler visual amb columnes (p. ex. *To Do / Doing / Done*) |
+| Rols | Product Owner, Scrum Master, equip de desenvolupament | No definix rols fixos |
+| Control del treball en curs | L'sprint ja tancat no canvia fins a la següent reunió de planificació | Límits de **WIP** (*work in progress*): un nombre màxim de tasques per columna, per a no començar més del que es pot acabar |
+| Reunions típiques | *Daily* (diària, breu), *sprint review* (ensenyar el fet) i *retrospectiva* (què millorar) | No exigix reunions fixes — el tauler és la referència constant |
+
+Ambdues són tècniques, no receptes tancades: molts equips mesclen idees de les dos (per exemple, "Scrumban").
+
+### 3.3. Quan usar cada model (escenaris d'ús)
+
+- **La cascada encaixa millor** quan els requisits estan tancats des del principi i canviaran poc (un contracte amb abast fix), quan la normativa exigix documentació extensa abans de cada fase (software mèdic, aeroespacial, de control industrial), o quan el client no pot o no vol participar de forma contínua durant el desenvolupament.
+- **L'àgil encaixa millor** quan els requisits són susceptibles de canviar sobre la marxa (un producte digital que s'ajusta segons l'ús real), quan interessa tindre alguna cosa funcionant com abans per a rebre *feedback*, o quan l'equip i el client poden mantindre contacte freqüent.
+
+> 📡 **Per què importa hui**: el **dashboard de finances personals** que anirem construint al llarg del curs és exactament el segon cas — anirem afegint funcions (registrar una despesa, crear categories, veure un gràfic mensual...) en increments curts, en compte d'intentar tancar tots els requisits abans d'escriure la primera línia de codi.
+
+**🧪 Exercici 8 — Cascada o àgil, i un primer tauler Kanban**
+**Part 1.** Per a cadascun d'estos dos projectes, decidix si encaixa millor amb cascada o amb metodologies àgils i justifica-ho en 1-2 línies: (a) el software de control d'un satèl·lit, amb requisits tancats per contracte i subjecte a certificació oficial abans de cada fase; (b) una app de receptes de cuina que un xicotet estudi vol llançar com abans per a anar millorant-la segons el que demanen els primers usuaris. Escriu la teua resposta en `exercici8.md`.
+**Part 2.** En el mateix fitxer, crea un tauler Kanban en format taula Markdown (columnes *To Do / Doing / Done*) per al dashboard de finances personals, repartint almenys 5 tasques entre les tres columnes (per exemple: "dissenyar el formulari de nova despesa", "connectar amb la base de dades", "gràfic de despeses per categoria"...).
+
+---
+
+## 4. Codi font, codi objecte i codi executable (CA 1c)
 
 Un dispositiu només entén **codi màquina** (binari). Com que ningú programa directament en binari, escrivim en un llenguatge de programació i deixem que unes eines ho tradueixquen — però eixe camí no és idèntic en tots els llenguatges:
 
@@ -308,20 +346,20 @@ codi font      ──(compilador)──▶  codi objecte   ──(+ biblioteques
    (.c)                             (.o)                                             (específic del SO)
 
 Model de codi intermedi (Java...):
-codi font      ──(compilador)──▶  codi intermedi / bytecode  ──(màquina virtual, punt 4)──▶  s'executa
+codi font      ──(compilador)──▶  codi intermedi / bytecode  ──(màquina virtual, punt 5)──▶  s'executa
    (.java)                          (.class)
 ```
 
 - **Codi font**: el conjunt d'instruccions que escriu el desenvolupador, en un fitxer de text (`.java`, `.py`, `.c`...).
 - **Codi objecte**: resultat de compilar el codi font en el model de compilació directa. Encara no és executable per si sol — li falta enllaçar-se amb biblioteques i amb les particularitats del sistema de destinació.
-- **Codi intermedi** (o *bytecode*): resultat de compilar el codi font en llenguatges com Java, pensat per a no dependre d'un processador concret. **No és sinònim de codi objecte**: no s'enllaça per a donar un executable natiu — l'executa una màquina virtual (ho veiem en el punt 4). En Java és el fitxer `.class`.
+- **Codi intermedi** (o *bytecode*): resultat de compilar el codi font en llenguatges com Java, pensat per a no dependre d'un processador concret. **No és sinònim de codi objecte**: no s'enllaça per a donar un executable natiu — l'executa una màquina virtual (ho veiem en el punt 5). En Java és el fitxer `.class`.
 - **Codi executable**: en el model de compilació directa, s'obté en afegir al codi objecte les funcions de biblioteques usades i les particularitats del sistema operatiu de destinació (procés normalment realitzat per un *enllaçador*). És el que el dispositiu interpreta directament.
 
 ⚠️ **Codi objecte i codi intermedi no són el mateix**, encara que tots dos siguen un pas a mig camí abans que el programa corra: l'objecte s'enllaça per a donar un executable natiu; l'intermedi l'interpreta una màquina virtual, sense passar per un enllaçador tradicional. És justament la frontera entre este punt (CA 1c) i el següent (CA 1d).
 
 ⚠️ Un mateix codi font pot necessitar generar **executables distints** segons el sistema operatiu de destinació (Windows, Linux, macOS), encara que el codi font no canvie — açò s'aplica al model de compilació directa.
 
-**L'enllaçador fa alguna cosa més que "ajuntar" fitxers** (de nou, en el model de compilació directa — en Java és la màquina virtual qui resol les classes en temps d'execució, punt 4). Decidix a més *com* s'incorporen les biblioteques a l'executable final:
+**L'enllaçador fa alguna cosa més que "ajuntar" fitxers** (de nou, en el model de compilació directa — en Java és la màquina virtual qui resol les classes en temps d'execució, punt 5). Decidix a més *com* s'incorporen les biblioteques a l'executable final:
 
 - **Enllaçat estàtic**: el codi de la biblioteca es copia dins del mateix executable. El fitxer final és més gran, però no depén de res extern per a funcionar.
 - **Enllaçat dinàmic**: l'executable només guarda una referència a la biblioteca, que es carrega per separat en temps d'execució (els `.dll` en Windows, els `.so` en Linux). Diversos programes poden compartir una mateixa còpia de la biblioteca en memòria, i actualitzar-la no obliga a recompilar cada programa que la usa.
@@ -331,10 +369,10 @@ codi font      ──(compilador)──▶  codi intermedi / bytecode  ──(m�
 | Llenguatge | Codi font | Codi objecte / intermedi | Codi executable |
 |---|---|---|---|
 | C (compilat) | `programa.c` | Intern al procés de compilació, no es guarda com a fitxer a part | `programa.exe` / binari natiu |
-| Java (híbrid) | `Programa.java` | `Programa.class` (bytecode) | No hi ha un executable natiu — l'interpreta la JVM (punt 4) |
+| Java (híbrid) | `Programa.java` | `Programa.class` (bytecode) | No hi ha un executable natiu — l'interpreta la JVM (punt 5) |
 | Python (interpretat) | `programa.py` | `__pycache__/programa.cpython-3XX.pyc` (bytecode en memòria cau, automàtic) | No es genera — l'intèrpret executa eixe bytecode compilat internament, sense generar un executable natiu a banda |
 
-> 💡 Retomarem esta taula en el punt 5, en classificar els llenguatges segons com s'executen — és la mateixa idea vista des de l'altre costat.
+> 💡 Retomarem esta taula en el punt 6, en classificar els llenguatges segons com s'executen — és la mateixa idea vista des de l'altre costat.
 
 **A la pràctica, amb ordes reals:**
 
@@ -343,7 +381,7 @@ codi font      ──(compilador)──▶  codi intermedi / bytecode  ──(m�
 $ gcc programa.c -o programa
 $ ./programa
 
-# Java: compilació a bytecode, i execució sobre la JVM (punt 4)
+# Java: compilació a bytecode, i execució sobre la JVM (punt 5)
 $ javac HolaMundo.java      # genera HolaMundo.class (codi intermedi, no codi objecte)
 $ java HolaMundo            # la JVM executa el bytecode (interpretant-lo o compilant-lo amb JIT)
 
@@ -351,18 +389,18 @@ $ java HolaMundo            # la JVM executa el bytecode (interpretant-lo o comp
 $ python programa.py        # no genera un executable natiu a banda — ho processa la seua pròpia màquina virtual
 ```
 
-> 📡 **Canviant activament: la frontera es difumina.** Motors com V8 (el que usen Chrome i Node.js) ja no només interpreten JavaScript línia a línia: compilen sobre la marxa, mentre el programa s'executa, les parts de codi que més es repetixen — s'anomena compilació **JIT** (*just-in-time*). En sentit contrari, eines com GraalVM permeten compilar bytecode Java directament a un executable natiu (`native-image`), sense necessitar una JVM en l'equip final. La classificació compilat/interpretat/híbrid del punt 5 seguix sent útil per a entendre la idea de fons, però cada vegada hi ha més llenguatges que mesclen les tres estratègies.
+> 📡 **Canviant activament: la frontera es difumina.** Motors com V8 (el que usen Chrome i Node.js) ja no només interpreten JavaScript línia a línia: compilen sobre la marxa, mentre el programa s'executa, les parts de codi que més es repetixen — s'anomena compilació **JIT** (*just-in-time*). En sentit contrari, eines com GraalVM permeten compilar bytecode Java directament a un executable natiu (`native-image`), sense necessitar una JVM en l'equip final. La classificació compilat/interpretat/híbrid del punt 6 seguix sent útil per a entendre la idea de fons, però cada vegada hi ha més llenguatges que mesclen les tres estratègies.
 
 > 🧯 **Pla B si no pots instal·lar el JDK**: usa un compilador Java en línia (per exemple, jdoodle.com/online-java-compiler) per a completar l'exercici sense instal·lar res localment — el que s'avalua és que entengues el procés font → bytecode → execució, no la instal·lació en si. Si disposes de la VM portàtil del cicle, el JDK ja ve preinstal·lat ahí: és el lloc ideal per a tindre'l llest per endavant.
 
-**🧪 Exercici 8 — De codi font a executable**
-Esta és l'única vegada en la unitat que usem Java per a un exercici de codi: és el llenguatge que millor il·lustra el model de codi intermedi — no cal que li agafes el gust a la seua sintaxi. Instal·la un JDK si no el tens, i en la teua carpeta `UD01` crea `HolaMundo.java` amb un programa que imprimisca el teu nom. Compila'l des de la terminal integrada amb `javac HolaMundo.java`. Localitza en l'explorador de fitxers de VS Codium el fitxer `.class` generat i executa'l amb `java HolaMundo`. En `exercici8.md`, explica amb les teues paraules què representa cadascun dels tres fitxers/moments (font, codi intermedi, execució) en este procés.
+**🧪 Exercici 9 — De codi font a executable**
+Esta és l'única vegada en la unitat que usem Java per a un exercici de codi: és el llenguatge que millor il·lustra el model de codi intermedi — no cal que li agafes el gust a la seua sintaxi. Instal·la un JDK si no el tens, i en la teua carpeta `UD01` crea `HolaMundo.java` amb un programa que imprimisca el teu nom. Compila'l des de la terminal integrada amb `javac HolaMundo.java`. Localitza en l'explorador de fitxers de VS Codium el fitxer `.class` generat i executa'l amb `java HolaMundo`. En `exercici9.md`, explica amb les teues paraules què representa cadascun dels tres fitxers/moments (font, codi intermedi, execució) en este procés.
 
-**🧪 Exercici 9 — L'esquema en distints llenguatges**
-Crea `exercici9.py` amb qualsevol instrucció senzilla (per exemple, un `print`) i executa'l una vegada des de la terminal integrada. Localitza en l'explorador de fitxers de VS Codium la carpeta `__pycache__` que es genera al costat i el fitxer `.pyc` que conté. Recolzant-te en la taula anterior i en el que acabes de veure, en `exercici9.md` explica amb les teues paraules per què en Python no té sentit parlar de "codi executable" de la mateixa forma que en C, i quin paper juga eixe `.pyc`.
+**🧪 Exercici 10 — L'esquema en distints llenguatges**
+Crea `exercici10.py` amb qualsevol instrucció senzilla (per exemple, un `print`) i executa'l una vegada des de la terminal integrada. Localitza en l'explorador de fitxers de VS Codium la carpeta `__pycache__` que es genera al costat i el fitxer `.pyc` que conté. Recolzant-te en la taula anterior i en el que acabes de veure, en `exercici10.md` explica amb les teues paraules per què en Python no té sentit parlar de "codi executable" de la mateixa forma que en C, i quin paper juga eixe `.pyc`.
 
-**🧪 Exercici 10 — Compilat vs. interpretat, cronòmetre en mà**
-Usem C només per a esta comparació puntual — no cal escriure'l ni dominar-lo, només compilar-lo, executar-lo i mesurar-lo. En la teua carpeta `UD01`, crea `exercici10.c` amb este codi ja escrit:
+**🧪 Exercici 11 — Compilat vs. interpretat, cronòmetre en mà**
+Usem C només per a esta comparació puntual — no cal escriure'l ni dominar-lo, només compilar-lo, executar-lo i mesurar-lo. En la teua carpeta `UD01`, crea `exercici11.c` amb este codi ja escrit:
 
 ```c
 #include <stdio.h>
@@ -376,11 +414,11 @@ int main() {
 }
 ```
 
-Ara escriu tu mateix, en `exercici10.py`, la versió equivalent en Python (un bucle que sume els números de l'1 al 10 milions — este sí en el llenguatge que ja coneixes). Des de la terminal integrada, compila i executa la versió en C (`gcc exercici10.c -o exercici10 && ./exercici10`); executa directament la versió en Python. Cronometra ambdues amb `time` (`time ./exercici10` i `time python exercici10.py`). En `exercici10.md`, arreplega els temps i explica la diferència segons el vist en este punt.
+Ara escriu tu mateix, en `exercici11.py`, la versió equivalent en Python (un bucle que sume els números de l'1 al 10 milions — este sí en el llenguatge que ja coneixes). Des de la terminal integrada, compila i executa la versió en C (`gcc exercici11.c -o exercici11 && ./exercici11`); executa directament la versió en Python. Cronometra ambdues amb `time` (`time ./exercici11` i `time python exercici11.py`). En `exercici11.md`, arreplega els temps i explica la diferència segons el vist en este punt.
 
 ---
 
-## 4. Codi intermedi i màquines virtuals (CA 1d)
+## 5. Codi intermedi i màquines virtuals (CA 1d)
 
 Segons com es tracte el codi, un executable pot ser:
 
@@ -394,7 +432,7 @@ Alguns llenguatges, com Java, resolen la portabilitat amb una **màquina virtual
 | **De sistema** | Simula un ordinador complet (arquitectura + SO) dins d'un altre | VirtualBox, VMware |
 | **De procés** | Executa el codi intermedi (bytecode) d'un llenguatge concret, independitzant-lo del hardware real | JVM (Java Virtual Machine) |
 
-La **JVM** executa el *bytecode* que genera el compilador de Java (els fitxers `.class`) — interpretant-lo instrucció a instrucció o, en les parts que més es repetixen, compilant-lo sobre la marxa (JIT, com vam veure en el punt 3) —, traduint-lo en ambdós casos a les instruccions del hardware concret on s'executa. Per això el mateix `.class` corre en Windows, Linux o macOS sense recompilar, sempre que hi haja una JVM instal·lada: "*write once, run anywhere*".
+La **JVM** executa el *bytecode* que genera el compilador de Java (els fitxers `.class`) — interpretant-lo instrucció a instrucció o, en les parts que més es repetixen, compilant-lo sobre la marxa (JIT, com vam veure en el punt 4) —, traduint-lo en ambdós casos a les instruccions del hardware concret on s'executa. Per això el mateix `.class` corre en Windows, Linux o macOS sense recompilar, sempre que hi haja una JVM instal·lada: "*write once, run anywhere*".
 
 > 🕰️ **Per què existix la JVM**: a mitjans dels anys 90 cada sistema operatiu tenia el seu propi format d'executable, i distribuir un programa per a diverses plataformes obligava a compilar-lo i mantindre'l per separat per a cadascuna. Sun Microsystems va dissenyar Java (1995) amb la JVM com a peça central per a resoldre justament eixe problema: compilar una sola vegada a bytecode i deixar que la màquina virtual s'encarregue d'adaptar-se al sistema real. La necessitat que va resoldre seguix vigent — és la mateixa raó de fons per la qual hui existixen els contenidors i WebAssembly, que veiem a continuació.
 
@@ -411,12 +449,12 @@ Programa.class ──(java, s'executa sobre la JVM)──▶  el programa corre
 
 > 📡 **Canviant activament: WebAssembly (Wasm)**. És l'evolució més recent de la mateixa idea de "bytecode portable", però pensada per al navegador: un format que permet executar codi escrit en C, C++, Rust o fins i tot Java dins d'una pàgina web, a una velocitat pròxima a la nativa — alguna cosa que JavaScript per si sol no oferix. No substituïx JavaScript, el complementa en les parts d'una aplicació web que necessiten més rendiment (edició d'imatge o vídeo en el mateix navegador, videojocs, càlcul intensiu). En el desenvolupament web actual és on més està creixent esta idea de "màquina virtual de procés".
 
-**🧪 Exercici 11 — JVM i WebAssembly, dues màquines virtuals de procés**
-Torna a llegir l'avís sobre WebAssembly d'este punt — no cal buscar res més. En `exercici11.md`, respon amb les teues pròpies paraules: (1) en què s'assemblen la JVM i WebAssembly com a màquines virtuals de procés? (2) on s'usa cadascuna, i per què WebAssembly no substituïx JavaScript sinó que el complementa?
+**🧪 Exercici 12 — JVM i WebAssembly, dues màquines virtuals de procés**
+Torna a llegir l'avís sobre WebAssembly d'este punt — no cal buscar res més. En `exercici12.md`, respon amb les teues pròpies paraules: (1) en què s'assemblen la JVM i WebAssembly com a màquines virtuals de procés? (2) on s'usa cadascuna, i per què WebAssembly no substituïx JavaScript sinó que el complementa?
 
 ---
 
-## 5. Classificació dels llenguatges de programació (CA 1e)
+## 6. Classificació dels llenguatges de programació (CA 1e)
 
 No hi ha una única forma de classificar els llenguatges; estes són les més habituals.
 
@@ -425,10 +463,10 @@ No hi ha una única forma de classificar els llenguatges; estes són les més ha
 | Tipus | Com funciona | Exemples | On s'usen més |
 |---|---|---|---|
 | **Compilats** | El codi font es tradueix sencer, d'una vegada, a un executable | C, C++, Pascal | Software d'escriptori (execució ràpida, fitxers més pesats) |
-| **Interpretats** | Un intèrpret executa el codi sense generar un executable natiu — molts (com Python) compilen abans internament a un bytecode que després processen (punt 3) | Python, PHP, JavaScript | Entorns web i scripting (menys recursos, més lents) |
+| **Interpretats** | Un intèrpret executa el codi sense generar un executable natiu — molts (com Python) compilen abans internament a un bytecode que després processen (punt 4) | Python, PHP, JavaScript | Entorns web i scripting (menys recursos, més lents) |
 | **Híbrids / virtuals** | Es compilen a codi intermedi (bytecode), que després interpreta una màquina virtual | Java, C# (en part) | Aplicacions que han de córrer en diverses plataformes sense recompilar |
 
-> 💡 Esta classificació és la primera aproximació més útil per a començar, però no és una etiqueta rígida i excloent: com vam veure en el punt 3, la frontera entre compilat i interpretat cada vegada és més difusa (motors JIT com V8, eines com GraalVM...). Servix per a entendre el model *dominant* de cada llenguatge, no per a encasellar-lo.
+> 💡 Esta classificació és la primera aproximació més útil per a començar, però no és una etiqueta rígida i excloent: com vam veure en el punt 4, la frontera entre compilat i interpretat cada vegada és més difusa (motors JIT com V8, eines com GraalVM...). Servix per a entendre el model *dominant* de cada llenguatge, no per a encasellar-lo.
 
 **Segons el nivell d'abstracció** (com més s'assemblen al llenguatge natural enfront del llenguatge màquina):
 
@@ -468,27 +506,27 @@ Finalment, en el context d'aplicacions web és habitual distingir entre **front-
 
 > 📡 **Actualitat**: la popularitat dels llenguatges canvia amb el temps. L'**índex TIOBE** (`tiobe.com/tiobe-index`) és una de les referències més consultades per a veure quins llenguatges estan en auge o en declivi — però és una fotografia mensual, no una veritat fixa: convé consultar-lo actualitzat en compte de memoritzar un rànquing.
 
-**🧪 Exercici 12 — Classifica estos llenguatges**
-En `exercici12.md`, per a Python, Java, C i JavaScript, indica en una taula Markdown: tipus d'execució (compilat/interpretat/híbrid), nivell d'abstracció i paradigma principal. Justifica cada resposta en una frase.
+**🧪 Exercici 13 — Classifica estos llenguatges**
+En `exercici13.md`, per a Python, Java, C i JavaScript, indica en una taula Markdown: tipus d'execució (compilat/interpretat/híbrid), nivell d'abstracció i paradigma principal. Justifica cada resposta en una frase.
 
-**🧪 Exercici 13 — El mateix problema, dos paradigmes**
-Per al dashboard de finances personals, planteja la tasca "obtindre els usuaris que han gastat més de 100 € este mes". En `exercici13.md`, escriu una solució imperativa en pseudocodi (amb un bucle i una condició); en `exercici13.sql`, la solució declarativa (una sola consulta `SELECT` — no cal executar-la encara, només que la sintaxi siga correcta). En `exercici13.md`, compara ambdues: quina descriu el "com" i quina el "què"?
+**🧪 Exercici 14 — El mateix problema, dos paradigmes**
+Per al dashboard de finances personals, planteja la tasca "obtindre els usuaris que han gastat més de 100 € este mes". En `exercici14.md`, escriu una solució imperativa en pseudocodi (amb un bucle i una condició); en `exercici14.sql`, la solució declarativa (una sola consulta `SELECT` — no cal executar-la encara, només que la sintaxi siga correcta). En `exercici14.md`, compara ambdues: quina descriu el "com" i quina el "què"?
 
 ---
 
-## 6. Eines del desenvolupament de software (CA 1f)
+## 7. Eines del desenvolupament de software (CA 1f)
 
 A més del llenguatge, un desenvolupador es recolza en eines que donen suport a cada fase del cicle de vida. Esta unitat només les **classifica**; aprofundirem en diverses d'elles en unitats posteriors.
 
-### 6.1. Editor de codi / IDE
+### 7.1. Editor de codi / IDE
 
 Un editor de text simple (el Bloc de notes) també pot escriure codi, però un **IDE** (*Integrated Development Environment*) afig eines integrades per a tot el cicle de codificació: autocompletat, ressaltat de sintaxi, detecció d'errors mentre escrius i depuració incorporada. Exemples: Visual Studio Code, Eclipse, IntelliJ. **Es treballa en detall en la UP2.**
 
-### 6.2. Compilador / intèrpret
+### 7.2. Compilador / intèrpret
 
-Tradueix codi font a codi objecte, intermedi o executable, o l'executa per mitjà d'un intèrpret o màquina virtual — és l'eina que materialitza tot el vist en els punts 3 i 5 d'esta unitat. Exemples: `javac`/`java`, el mateix intèrpret de Python, GCC. **UP1-UP2.**
+Tradueix codi font a codi objecte, intermedi o executable, o l'executa per mitjà d'un intèrpret o màquina virtual — és l'eina que materialitza tot el vist en els punts 4 i 6 d'esta unitat. Exemples: `javac`/`java`, el mateix intèrpret de Python, GCC. **UP1-UP2.**
 
-### 6.3. Control de versions
+### 7.3. Control de versions
 
 Registra l'historial de canvis del codi i permet que diverses persones treballen sobre el mateix projecte sense sobreescriure's — ja ho vam avançar en el punt 2.3, en parlar de la fase de Codificació. Exemples: Git, GitHub. **UP3.**
 
@@ -498,11 +536,11 @@ $ git add cambios.py
 $ git commit -m "Primer commit"
 ```
 
-### 6.4. Depuració i proves
+### 7.4. Depuració i proves
 
 Permet executar el programa pas a pas, inspeccionar el valor de les variables en cada moment, i automatitzar les comprovacions vistes en el punt 2.4 (proves unitàries, d'integració...) en compte de repetir-les a mà cada vegada. Exemples: el depurador integrat de l'IDE, JUnit. **UP5.**
 
-### 6.5. Gestió de dependències i construcció del projecte
+### 7.5. Gestió de dependències i construcció del projecte
 
 Instal·la biblioteques externes (retomant el concepte de biblioteca del punt 1.1) sense haver de descarregar-les i integrar-les a mà, i automatitza passos repetitius com compilar, executar proves o empaquetar el projecte. Exemples: `pip`, Maven, npm. **UP2.**
 
@@ -515,21 +553,21 @@ $ source .venv/bin/activate               # l'activa (Linux/Mac); en Windows: .v
 (.venv) $ pip freeze > requirements.txt   # registra les dependències del projecte
 ```
 
-> 📡 **Un pas més: contenidors**. Un entorn virtual aïlla les dependències de Python, però no la resta del sistema (versió del sistema operatiu, altres programes instal·lats...). Quan eixe aïllament cal portar-lo també ahí — per exemple, perquè l'aplicació corra igual en qualsevol ordinador o servidor —, s'usa un **contenidor** (Docker és el més conegut), que ja vam veure com a concepte en el punt 4. És la mateixa idea de fons que un `venv`, però un nivell més avall — amb base i pràctica real ho treballarem en la UP2.
+> 📡 **Un pas més: contenidors**. Un entorn virtual aïlla les dependències de Python, però no la resta del sistema (versió del sistema operatiu, altres programes instal·lats...). Quan eixe aïllament cal portar-lo també ahí — per exemple, perquè l'aplicació corra igual en qualsevol ordinador o servidor —, s'usa un **contenidor** (Docker és el més conegut), que ja vam veure com a concepte en el punt 5. És la mateixa idea de fons que un `venv`, però un nivell més avall — amb base i pràctica real ho treballarem en la UP2.
 
-### 6.6. Anàlisi i documentació de codi
+### 7.6. Anàlisi i documentació de codi
 
 Revisa automàticament la qualitat del codi (codi duplicat, mal estil, possibles vulnerabilitats) i genera documentació tècnica a partir dels mateixos comentaris del codi font. Exemples: SonarQube, Javadoc. **UP7.**
 
-> 📡 **Canviant activament: assistents de codi amb IA**. Eines com GitHub Copilot, o l'autocompletat intel·ligent ja integrat en molts IDEs actuals, suggerixen codi mentre escrius recolzant-se en models de llenguatge. No són una categoria nova: s'integren dins de l'editor/IDE (6.1). Estan canviant com s'escriu codi dia a dia, però continuen fent falta els mateixos fonaments d'esta unitat per a revisar i entendre el que suggerixen — no per a copiar-ho sense més.
+> 📡 **Canviant activament: assistents de codi amb IA**. Eines com GitHub Copilot, o l'autocompletat intel·ligent ja integrat en molts IDEs actuals, suggerixen codi mentre escrius recolzant-se en models de llenguatge. No són una categoria nova: s'integren dins de l'editor/IDE (7.1). Estan canviant com s'escriu codi dia a dia, però continuen fent falta els mateixos fonaments d'esta unitat per a revisar i entendre el que suggerixen — no per a copiar-ho sense més.
 
 > 💡 Exemple integrador: si més avant desenvolupem un **dashboard de finances personals** en Python amb una base de dades SQLite, usaríem com a mínim: un IDE (VS Code) per a escriure el codi, Git/GitHub per al control de versions, `pip` per a instal·lar biblioteques (per exemple, per a generar gràfics) i `pytest` per a provar que els càlculs són correctes. Cadascuna d'eixes eines cobrix una funcionalitat distinta dins del desenvolupament.
 
-**🧪 Exercici 14 — Eines per a un projecte**
-Per al projecte de "dashboard de finances personals" del punt 6, en `exercici14.md` indica quina eina de cada categoria de la taula usaries i per què, encara que hui no sàpies usar-les encara (busca-ho si cal).
+**🧪 Exercici 15 — Eines per a un projecte**
+Per al projecte de "dashboard de finances personals" del punt 7, en `exercici15.md` indica quina eina de cada categoria de la taula usaries i per què, encara que hui no sàpies usar-les encara (busca-ho si cal).
 
-**🧪 Exercici 15 — Instal·la i prova una eina**
-Tria una categoria de la taula anterior amb una eina que no conegues encara (per exemple, un linter d'anàlisi de codi o un gestor de dependències distint al vist en classe) i instal·la-la en el teu equip. Prova-la des de la terminal integrada de VS Codium sobre algun dels fitxers que ja tens en la teua carpeta `UD01`. En `exercici15.md`, documenta en 4-5 línies: quin problema resol, quina orde vas usar per a instal·lar-la, i el resultat d'haver-la executat.
+**🧪 Exercici 16 — Instal·la i prova una eina**
+Tria una categoria de la taula anterior amb una eina que no conegues encara (per exemple, un linter d'anàlisi de codi o un gestor de dependències distint al vist en classe) i instal·la-la en el teu equip. Prova-la des de la terminal integrada de VS Codium sobre algun dels fitxers que ja tens en la teua carpeta `UD01`. En `exercici16.md`, documenta en 4-5 línies: quin problema resol, quina orde vas usar per a instal·lar-la, i el resultat d'haver-la executat.
 
 ---
 
@@ -538,7 +576,7 @@ Tria una categoria de la taula anterior amb una eina que no conegues encara (per
 Tria una aplicació que uses habitualment al mòbil (una app de missatgeria, de banca, de transport...). Investiga primer quines tecnologies té documentades públicament (la seua web de desenvolupadors, ofertes d'ocupació de l'empresa...); quan no troves res verificable, formula una hipòtesi raonada i digues-ho explícitament com a tal — distingir "ho sé", "ho he trobat documentat" i "ho estic deduint" és una habilitat tan important com el contingut tècnic. En VS Codium, crea `repte.md` dins de la teua carpeta `UD01` amb una fitxa que incloga:
 
 1. Una hipòtesi raonada sobre quin(s) llenguatge(s) de programació es van usar per a la seua part visible i per a la seua lògica interna (front-end/back-end), amb almenys un argument tècnic de per què.
-2. Una hipòtesi sobre si l'executable que corre al teu mòbil és compilat, interpretat o híbrid (justifica-ho amb el que sàpies d'Android/iOS i les màquines virtuals vistes en el punt 4).
+2. Una hipòtesi sobre si l'executable que corre al teu mòbil és compilat, interpretat o híbrid (justifica-ho amb el que sàpies d'Android/iOS i les màquines virtuals vistes en el punt 5).
 3. Un esquema de les 7 fases del cicle de vida aplicat a eixa app: quins requisits creus que es van recollir en l'Anàlisi, i quin tipus de Manteniment rep (busca el seu historial d'actualitzacions en la botiga d'aplicacions com a pista).
 
 **Plantilla orientativa per a `repte.md`** (pots seguir-la tal qual o adaptar-la):
@@ -553,7 +591,7 @@ Tria una aplicació que uses habitualment al mòbil (una app de missatgeria, de 
 
 ## 2. Compilat, interpretat o híbrid
 - Hipòtesi: ...
-- Justificació (Android/iOS, màquines virtuals del punt 4): ...
+- Justificació (Android/iOS, màquines virtuals del punt 5): ...
 
 ## 3. Cicle de vida aplicat
 - Requisits que creus que es van recollir en l'Anàlisi: ...
@@ -570,15 +608,17 @@ Tria una aplicació que uses habitualment al mòbil (una app de missatgeria, de 
 
 **1. El programa i els components del sistema** El software es classifica per la seua forma (programa, biblioteca, aplicació, suite) i per la seua funció (software de sistema vs. d'aplicació). Un programa en execució es recolza en memòria (RAM, volàtil), processador (cicle fetch-decode-execute) i perifèrics (entrada, eixida o ambdues) — programar és només la fase de codificació dins de desenvolupar software, que a més analitza, dissenya, prova, documenta i manté.
 
-**2. El cicle de vida del software** Model en cascada, en 7 fases: anàlisi (requisits funcionals/no funcionals), disseny (arquitectònic i detallat, UML), codificació (bones pràctiques), proves (caixa negra/blanca, nivells), documentació d'usuari, explotació (estratègies d'implantació) i manteniment (correctiu, evolutiu, adaptatiu, perfectiu) — cada fase genera la seua pròpia documentació i amb rols que poden solapar-se. La cascada és el model de referència per a entendre les fases, però hui la majoria d'equips usa metodologies àgils (CA 1g, es veuen en la UP6); altres models clàssics (iteratiu-incremental, en espiral, prototipatge) sí que formen part d'esta unitat.
+**2. El cicle de vida del software** Model en cascada, en 7 fases: anàlisi (requisits funcionals/no funcionals), disseny (arquitectònic i detallat, UML), codificació (bones pràctiques), proves (caixa negra/blanca, nivells), documentació d'usuari, explotació (estratègies d'implantació) i manteniment (correctiu, evolutiu, adaptatiu, perfectiu) — cada fase genera la seua pròpia documentació i amb rols que poden solapar-se. La cascada és el model de referència per a entendre les fases, però hui la majoria d'equips usa metodologies àgils (vegeu el punt 3); altres models clàssics (iteratiu-incremental, en espiral, prototipatge) sí que formen part d'esta unitat.
 
-**3. Codi font, objecte i executable** En compilació directa (C), el codi font es compila a codi objecte i este s'enllaça (de forma estàtica o dinàmica) amb biblioteques i particularitats del SO per a donar l'executable natiu final; en el model de codi intermedi (Java), el font compila a bytecode i és una màquina virtual, no un enllaçador, qui l'executa — codi objecte i codi intermedi no són sinònims, encara que tots dos siguen un pas a mig camí. L'esquema es veu distint segons el llenguatge siga compilat, híbrid o interpretat, i pot necessitar executables distints segons la plataforma de destinació. La frontera compilat/interpretat ja no és tan taxativa: motors JIT com V8 compilen JavaScript sobre la marxa, i eines com GraalVM compilen bytecode Java a executable natiu.
+**3. Metodologies àgils de desenvolupament** Sorgixen enfront de les limitacions de la cascada (documentació extensa, una sola entrega final, poc marge per al canvi) — el Manifest Àgil (2001) prioritza el software funcionant i la col·laboració freqüent amb el client. Scrum (sprints, rols, reunions fixes) i Kanban (tauler visual, límits de WIP, flux continu) són les seues dos tècniques més usades; la cascada encaixa millor amb requisits tancats o molt regulats, l'àgil amb projectes que evolucionen sobre la marxa — com el dashboard de finances personals d'esta unitat.
 
-**4. Codi intermedi i màquines virtuals** Les màquines virtuals (de sistema o de procés) permeten portabilitat: la JVM executa el mateix bytecode `.class` en qualsevol sistema operatiu, la idea darrere de "write once, run anywhere" — Python i .NET seguixen un plantejament semblant, i va nàixer per a resoldre la manca de portabilitat entre sistemes operatius dels anys 90. Els contenidors (Docker) i WebAssembly (bytecode portable per al navegador) són evolucions més recents de la mateixa idea.
+**4. Codi font, objecte i executable** En compilació directa (C), el codi font es compila a codi objecte i este s'enllaça (de forma estàtica o dinàmica) amb biblioteques i particularitats del SO per a donar l'executable natiu final; en el model de codi intermedi (Java), el font compila a bytecode i és una màquina virtual, no un enllaçador, qui l'executa — codi objecte i codi intermedi no són sinònims, encara que tots dos siguen un pas a mig camí. L'esquema es veu distint segons el llenguatge siga compilat, híbrid o interpretat, i pot necessitar executables distints segons la plataforma de destinació. La frontera compilat/interpretat ja no és tan taxativa: motors JIT com V8 compilen JavaScript sobre la marxa, i eines com GraalVM compilen bytecode Java a executable natiu.
 
-**5. Classificació dels llenguatges** Es classifiquen segons com s'executen (compilats, interpretats, híbrids), el seu nivell d'abstracció (baix, mitjà, alt) i el seu paradigma dominant (imperatiu, orientat a objectes, funcional, declaratiu — la majoria combina diversos, i un mateix problema es resol de forma distinta en cada paradigma) — a més de la distinció front-end/back-end, i el perfil full-stack que domina ambdues.
+**5. Codi intermedi i màquines virtuals** Les màquines virtuals (de sistema o de procés) permeten portabilitat: la JVM executa el mateix bytecode `.class` en qualsevol sistema operatiu, la idea darrere de "write once, run anywhere" — Python i .NET seguixen un plantejament semblant, i va nàixer per a resoldre la manca de portabilitat entre sistemes operatius dels anys 90. Els contenidors (Docker) i WebAssembly (bytecode portable per al navegador) són evolucions més recents de la mateixa idea.
 
-**6. Eines del desenvolupament de software** IDE, compiladors/intèrprets, control de versions, depuració i proves, gestió de dependències, i anàlisi/documentació de codi — cada categoria dona suport a una fase distinta del cicle de vida del punt 2, amb ordes i exemples reals (Git, pip, venv) que es treballaran en detall a partir de la UP2, on entraran també els contenidors (Docker); els assistents de codi amb IA són la novetat més activa dins de l'editor/IDE, sense substituir els fonaments d'esta unitat.
+**6. Classificació dels llenguatges** Es classifiquen segons com s'executen (compilats, interpretats, híbrids), el seu nivell d'abstracció (baix, mitjà, alt) i el seu paradigma dominant (imperatiu, orientat a objectes, funcional, declaratiu — la majoria combina diversos, i un mateix problema es resol de forma distinta en cada paradigma) — a més de la distinció front-end/back-end, i el perfil full-stack que domina ambdues.
+
+**7. Eines del desenvolupament de software** IDE, compiladors/intèrprets, control de versions, depuració i proves, gestió de dependències, i anàlisi/documentació de codi — cada categoria dona suport a una fase distinta del cicle de vida del punt 2, amb ordes i exemples reals (Git, pip, venv) que es treballaran en detall a partir de la UP2, on entraran també els contenidors (Docker); els assistents de codi amb IA són la novetat més activa dins de l'editor/IDE, sense substituir els fonaments d'esta unitat.
 
 ---
 

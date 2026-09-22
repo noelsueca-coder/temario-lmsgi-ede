@@ -23,20 +23,19 @@
 ## Índice
 
 1. El programa y los componentes del sistema (CA 1a)
-2. El ciclo de vida del software: fases del desarrollo (CA 1b)
-3. Código fuente, código objeto y código ejecutable (CA 1c)
-4. Código intermedio y máquinas virtuales (CA 1d)
-5. Clasificación de los lenguajes de programación (CA 1e)
-6. Herramientas del desarrollo de software (CA 1f)
-7. Reto de clase
-8. Resumen de la unidad
-9. Para saber más
+2. El ciclo de vida del software: el modelo clásico (CA 1b)
+3. Metodologías ágiles de desarrollo (CA 1g)
+4. Código fuente, código objeto y código ejecutable (CA 1c)
+5. Código intermedio y máquinas virtuales (CA 1d)
+6. Clasificación de los lenguajes de programación (CA 1e)
+7. Herramientas del desarrollo de software (CA 1f)
+8. Reto de clase
+9. Resumen de la unidad
+10. Para saber más
 
 <div style="page-break-after: always;"></div>
 
-**RA cubierto:** RA1 (CA 1a-1f) — Reconoce los elementos y herramientas que intervienen en el desarrollo de un programa informático, analizando sus características y las fases en que actúan hasta llegar a su puesta en funcionamiento.
-
-> ⚠️ **Nota de programación**: el CA 1g (metodologías ágiles de desarrollo de software) **no** se trabaja en esta unidad — está asignado a la UP6 (Gestión de proyectos informáticos), donde el alumnado ya conoce el ciclo de vida y las fases que se presentan aquí. El RA1 completo queda programado igualmente: 1a-1f aquí, 1g en la UP6.
+**RA cubierto:** RA1 (CA 1a-1g) — Reconoce los elementos y herramientas que intervienen en el desarrollo de un programa informático, analizando sus características y las fases en que actúan hasta llegar a su puesta en funcionamiento.
 
 > 💡 **Nota de estudio**: esta unidad da el vocabulario y los conceptos que usarás durante todo el curso — cuando en UD2 instales un IDE o en UD3 hagas tu primer commit, estarás usando "herramientas de desarrollo" tal como se clasifican aquí.
 
@@ -48,7 +47,7 @@
 
 Al terminar esta unidad sabrás:
 - Distinguir programa, software (por forma y por función) y explicar cómo interactúan memoria, procesador y periféricos cuando un programa se ejecuta.
-- Reconocer las fases del ciclo de vida del software (modelo en cascada) y qué produce cada una, junto con sus alternativas.
+- Reconocer las fases del ciclo de vida del software (modelo clásico en cascada) y cuándo conviene aplicar en su lugar una metodología ágil (Scrum, Kanban).
 - Diferenciar código fuente, objeto, intermedio y ejecutable, y clasificar lenguajes de programación y herramientas de desarrollo según la fase a la que dan soporte.
 
 ---
@@ -159,7 +158,7 @@ En `ejercicio4.py`, escribe un programa que pida un nombre por teclado (`input()
 
 ---
 
-## 2. El ciclo de vida del software: fases del desarrollo (CA 1b)
+## 2. El ciclo de vida del software: el modelo clásico (CA 1b)
 
 Todo desarrollo de software recorre, con más o menos rigor, un conjunto de etapas conocido como **ciclo de vida del software**. El modelo más clásico —y el que usaremos como referencia para entender cada fase— es el **modelo en cascada**: cada fase se apoya en la anterior y genera una documentación propia, sin empezar la siguiente hasta cerrar la actual.
 
@@ -283,7 +282,7 @@ No. El modelo en cascada es lineal y rígido — si en Pruebas aparece un fallo 
 | **En espiral** (Boehm) | Combina iteración con un análisis de riesgos explícito en cada vuelta, antes de seguir avanzando |
 | **De prototipado** | Se construye pronto una versión reducida y funcional para validarla con el cliente antes de desarrollar el sistema completo |
 
-> 📡 **Actualidad**: hoy, la gran mayoría de equipos de desarrollo no usa cascada ni estos modelos clásicos como forma habitual de trabajar, sino **metodologías ágiles** (Scrum, Kanban...) — según el informe *State of Agile* de Digital.ai, alrededor del 71% de las organizaciones declara usarlas en su ciclo de desarrollo. La cascada sigue siendo útil como modelo de referencia para entender qué fases existen y qué produce cada una (que es el objetivo de este punto), y todavía se usa en proyectos con requisitos muy cerrados o muy regulados — pero no es representativa de cómo trabaja hoy la mayoría de equipos. Cómo funcionan las metodologías ágiles en concreto se ve en detalle en la UP6 (CA 1g).
+> 📡 **Actualidad**: hoy, la gran mayoría de equipos de desarrollo no usa cascada ni estos modelos clásicos como forma habitual de trabajar, sino **metodologías ágiles** (Scrum, Kanban...) — según el informe *State of Agile* de Digital.ai, alrededor del 71% de las organizaciones declara usarlas en su ciclo de desarrollo. La cascada sigue siendo útil como modelo de referencia para entender qué fases existen y qué produce cada una (que es el objetivo de este punto), y todavía se usa en proyectos con requisitos muy cerrados o muy regulados — pero no es representativa de cómo trabaja hoy la mayoría de equipos. Vemos cómo funcionan estas metodologías ágiles, sus técnicas y cuándo aplicarlas, en el punto siguiente.
 
 **🧪 Ejercicios de la fase**
 
@@ -298,7 +297,45 @@ Busca el registro de cambios (*changelog* o "novedades de esta versión") de una
 
 ---
 
-## 3. Código fuente, código objeto y código ejecutable (CA 1c)
+## 3. Metodologías ágiles de desarrollo (CA 1g)
+
+### 3.1. Por qué surgen: los límites de la cascada
+
+| | Modelo clásico (cascada) | Metodologías ágiles |
+|---|---|---|
+| Requisitos | Se cierran al principio; cambiar algo a mitad de proyecto es costoso | Se esperan cambios; se revisan y ajustan en cada iteración |
+| Entrega al cliente | Una sola vez, al final del proyecto | Parcial y frecuente — cada pocas semanas |
+| Documentación | Extensa y formal (ERS, cuaderno de carga...) | La mínima necesaria; el software que funciona pesa más que el papel |
+| Participación del cliente | Sobre todo en Análisis y en Pruebas de aceptación | En cada iteración, revisando lo entregado |
+
+En 2001, un grupo de desarrolladores publicó el **Manifiesto Ágil**, con cuatro valores que resumen este cambio de enfoque: individuos e interacciones sobre procesos y herramientas; software funcionando sobre documentación exhaustiva; colaboración con el cliente sobre negociación contractual; responder al cambio sobre seguir un plan rígido. No dice que lo segundo de cada par no importe — dice que lo primero pesa más cuando hay que elegir.
+
+### 3.2. Técnicas ágiles más usadas
+
+| | Scrum | Kanban |
+|---|---|---|
+| Ritmo de trabajo | Por *sprints*: bloques cerrados de 1 a 4 semanas | Flujo continuo, sin bloques de tiempo fijos |
+| Cómo se organiza el trabajo | *Product backlog* (lista priorizada de todo el proyecto) → *sprint backlog* (lo que entra en el sprint actual) | Tablero visual con columnas (p. ej. *To Do / Doing / Done*) |
+| Roles | Product Owner, Scrum Master, equipo de desarrollo | No define roles fijos |
+| Control del trabajo en curso | El sprint ya cerrado no cambia hasta la siguiente reunión de planificación | Límites de **WIP** (*work in progress*): un número máximo de tareas por columna, para no empezar más de lo que se puede terminar |
+| Reuniones típicas | *Daily* (diaria, breve), *sprint review* (enseñar lo hecho) y *retrospectiva* (qué mejorar) | No exige reuniones fijas — el tablero es la referencia constante |
+
+Ambas son técnicas, no recetas cerradas: muchos equipos mezclan ideas de las dos (por ejemplo, "Scrumban").
+
+### 3.3. Cuándo usar cada modelo (escenarios de uso)
+
+- **La cascada encaja mejor** cuando los requisitos están cerrados desde el principio y cambiarán poco (un contrato con alcance fijo), cuando la normativa exige documentación extensa antes de cada fase (software médico, aeroespacial, de control industrial), o cuando el cliente no puede o no quiere participar de forma continua durante el desarrollo.
+- **Lo ágil encaja mejor** cuando los requisitos son susceptibles de cambiar sobre la marcha (un producto digital que se ajusta según el uso real), cuando interesa tener algo funcionando cuanto antes para recibir *feedback*, o cuando el equipo y el cliente pueden mantener contacto frecuente.
+
+> 📡 **Por qué importa hoy**: el **dashboard de finanzas personales** que iremos construyendo a lo largo del curso es exactamente el segundo caso — iremos añadiendo funciones (registrar un gasto, crear categorías, ver un gráfico mensual...) en incrementos cortos, en vez de intentar cerrar todos los requisitos antes de escribir la primera línea de código.
+
+**🧪 Ejercicio 8 — Cascada o ágil, y un primer tablero Kanban**
+**Parte 1.** Para cada uno de estos dos proyectos, decide si encaja mejor con cascada o con metodologías ágiles y justifícalo en 1-2 líneas: (a) el software de control de un satélite, con requisitos cerrados por contrato y sujeto a certificación oficial antes de cada fase; (b) una app de recetas de cocina que un pequeño estudio quiere lanzar cuanto antes para ir mejorándola según lo que pidan los primeros usuarios. Escribe tu respuesta en `ejercicio8.md`.
+**Parte 2.** En el mismo archivo, crea un tablero Kanban en formato tabla Markdown (columnas *To Do / Doing / Done*) para el dashboard de finanzas personales, repartiendo al menos 5 tareas entre las tres columnas (por ejemplo: "diseñar el formulario de nuevo gasto", "conectar con la base de datos", "gráfico de gastos por categoría"...).
+
+---
+
+## 4. Código fuente, código objeto y código ejecutable (CA 1c)
 
 Un dispositivo solo entiende **código máquina** (binario). Como nadie programa directamente en binario, escribimos en un lenguaje de programación y dejamos que unas herramientas lo traduzcan — pero ese camino no es idéntico en todos los lenguajes:
 
@@ -308,20 +345,20 @@ código fuente  ──(compilador)──▶  código objeto  ──(+ librerías
    (.c)                             (.o)                                          (específico del SO)
 
 Modelo de código intermedio (Java...):
-código fuente  ──(compilador)──▶  código intermedio / bytecode  ──(máquina virtual, punto 4)──▶  se ejecuta
+código fuente  ──(compilador)──▶  código intermedio / bytecode  ──(máquina virtual, punto 5)──▶  se ejecuta
    (.java)                          (.class)
 ```
 
 - **Código fuente**: el conjunto de instrucciones que escribe el desarrollador, en un fichero de texto (`.java`, `.py`, `.c`...).
 - **Código objeto**: resultado de compilar el código fuente en el modelo de compilación directa. Todavía no es ejecutable por sí solo — le falta enlazarse con librerías y con las particularidades del sistema de destino.
-- **Código intermedio** (o *bytecode*): resultado de compilar el código fuente en lenguajes como Java, pensado para no depender de un procesador concreto. **No es sinónimo de código objeto**: no se enlaza para dar un ejecutable nativo — lo ejecuta una máquina virtual (lo vemos en el punto 4). En Java es el fichero `.class`.
+- **Código intermedio** (o *bytecode*): resultado de compilar el código fuente en lenguajes como Java, pensado para no depender de un procesador concreto. **No es sinónimo de código objeto**: no se enlaza para dar un ejecutable nativo — lo ejecuta una máquina virtual (lo vemos en el punto 5). En Java es el fichero `.class`.
 - **Código ejecutable**: en el modelo de compilación directa, se obtiene al añadir al código objeto las funciones de librerías usadas y las particularidades del sistema operativo de destino (proceso normalmente realizado por un *enlazador*). Es lo que el dispositivo interpreta directamente.
 
 ⚠️ **Código objeto y código intermedio no son lo mismo**, aunque los dos sean un paso a medio camino antes de que el programa corra: el objeto se enlaza para dar un ejecutable nativo; el intermedio lo interpreta una máquina virtual, sin pasar por un enlazador tradicional. Es justo la frontera entre este punto (CA 1c) y el siguiente (CA 1d).
 
 ⚠️ Un mismo código fuente puede necesitar generar **ejecutables distintos** según el sistema operativo destino (Windows, Linux, macOS), aunque el código fuente no cambie — esto aplica al modelo de compilación directa.
 
-**El enlazador hace algo más que "juntar" ficheros** (de nuevo, en el modelo de compilación directa — en Java es la máquina virtual quien resuelve las clases en tiempo de ejecución, punto 4). Decide además *cómo* se incorporan las librerías al ejecutable final:
+**El enlazador hace algo más que "juntar" ficheros** (de nuevo, en el modelo de compilación directa — en Java es la máquina virtual quien resuelve las clases en tiempo de ejecución, punto 5). Decide además *cómo* se incorporan las librerías al ejecutable final:
 
 - **Enlazado estático**: el código de la librería se copia dentro del propio ejecutable. El fichero final es más grande, pero no depende de nada externo para funcionar.
 - **Enlazado dinámico**: el ejecutable solo guarda una referencia a la librería, que se carga por separado en tiempo de ejecución (los `.dll` en Windows, los `.so` en Linux). Varios programas pueden compartir una misma copia de la librería en memoria, y actualizarla no obliga a recompilar cada programa que la usa.
@@ -331,10 +368,10 @@ código fuente  ──(compilador)──▶  código intermedio / bytecode  ─�
 | Lenguaje | Código fuente | Código objeto / intermedio | Código ejecutable |
 |---|---|---|---|
 | C (compilado) | `programa.c` | Interno al proceso de compilación, no se guarda como archivo aparte | `programa.exe` / binario nativo |
-| Java (híbrido) | `Programa.java` | `Programa.class` (bytecode) | No hay un ejecutable nativo — lo interpreta la JVM (punto 4) |
+| Java (híbrido) | `Programa.java` | `Programa.class` (bytecode) | No hay un ejecutable nativo — lo interpreta la JVM (punto 5) |
 | Python (interpretado) | `programa.py` | `__pycache__/programa.cpython-3XX.pyc` (bytecode cacheado, automático) | No se genera — el intérprete ejecuta ese bytecode compilado internamente, sin generar un ejecutable nativo aparte |
 
-> 💡 Retomaremos esta tabla en el punto 5, al clasificar los lenguajes según cómo se ejecutan — es la misma idea vista desde el otro lado.
+> 💡 Retomaremos esta tabla en el punto 6, al clasificar los lenguajes según cómo se ejecutan — es la misma idea vista desde el otro lado.
 
 **En la práctica, con comandos reales:**
 
@@ -343,7 +380,7 @@ código fuente  ──(compilador)──▶  código intermedio / bytecode  ─�
 $ gcc programa.c -o programa
 $ ./programa
 
-# Java: compilación a bytecode, y ejecución sobre la JVM (punto 4)
+# Java: compilación a bytecode, y ejecución sobre la JVM (punto 5)
 $ javac HolaMundo.java      # genera HolaMundo.class (código intermedio, no código objeto)
 $ java HolaMundo            # la JVM ejecuta el bytecode (interpretándolo o compilándolo con JIT)
 
@@ -351,18 +388,18 @@ $ java HolaMundo            # la JVM ejecuta el bytecode (interpretándolo o com
 $ python programa.py        # no genera un ejecutable nativo aparte — lo procesa su propia máquina virtual
 ```
 
-> 📡 **Cambiando activamente: la frontera se difumina.** Motores como V8 (el que usan Chrome y Node.js) ya no solo interpretan JavaScript línea a línea: compilan sobre la marcha, mientras el programa se ejecuta, las partes de código que más se repiten — se llama compilación **JIT** (*just-in-time*). En sentido contrario, herramientas como GraalVM permiten compilar bytecode Java directamente a un ejecutable nativo (`native-image`), sin necesitar una JVM en el equipo final. La clasificación compilado/interpretado/híbrido del punto 5 sigue siendo útil para entender la idea de fondo, pero cada vez hay más lenguajes que mezclan las tres estrategias.
+> 📡 **Cambiando activamente: la frontera se difumina.** Motores como V8 (el que usan Chrome y Node.js) ya no solo interpretan JavaScript línea a línea: compilan sobre la marcha, mientras el programa se ejecuta, las partes de código que más se repiten — se llama compilación **JIT** (*just-in-time*). En sentido contrario, herramientas como GraalVM permiten compilar bytecode Java directamente a un ejecutable nativo (`native-image`), sin necesitar una JVM en el equipo final. La clasificación compilado/interpretado/híbrido del punto 6 sigue siendo útil para entender la idea de fondo, pero cada vez hay más lenguajes que mezclan las tres estrategias.
 
 > 🧯 **Plan B si no puedes instalar el JDK**: usa un compilador Java online (por ejemplo, jdoodle.com/online-java-compiler) para completar el ejercicio sin instalar nada localmente — lo que se evalúa es que entiendas el proceso fuente → bytecode → ejecución, no la instalación en sí. Si dispones de la VM portátil del ciclo, el JDK ya viene preinstalado ahí: es el sitio ideal para tenerlo listo de antemano.
 
-**🧪 Ejercicio 8 — De código fuente a ejecutable**
-Esta es la única vez en la unidad que usamos Java para un ejercicio de código: es el lenguaje que mejor ilustra el modelo de código intermedio — no hace falta que le cojas el gusto a su sintaxis. Instala un JDK si no lo tienes, y en tu carpeta `UD01` crea `HolaMundo.java` con un programa que imprima tu nombre. Compílalo desde la terminal integrada con `javac HolaMundo.java`. Localiza en el explorador de archivos de VS Codium el fichero `.class` generado y ejecútalo con `java HolaMundo`. En `ejercicio8.md`, explica con tus palabras qué representa cada uno de los tres ficheros/momentos (fuente, código intermedio, ejecución) en este proceso.
+**🧪 Ejercicio 9 — De código fuente a ejecutable**
+Esta es la única vez en la unidad que usamos Java para un ejercicio de código: es el lenguaje que mejor ilustra el modelo de código intermedio — no hace falta que le cojas el gusto a su sintaxis. Instala un JDK si no lo tienes, y en tu carpeta `UD01` crea `HolaMundo.java` con un programa que imprima tu nombre. Compílalo desde la terminal integrada con `javac HolaMundo.java`. Localiza en el explorador de archivos de VS Codium el fichero `.class` generado y ejecútalo con `java HolaMundo`. En `ejercicio9.md`, explica con tus palabras qué representa cada uno de los tres ficheros/momentos (fuente, código intermedio, ejecución) en este proceso.
 
-**🧪 Ejercicio 9 — El esquema en distintos lenguajes**
-Crea `ejercicio9.py` con cualquier instrucción sencilla (por ejemplo, un `print`) y ejecútalo una vez desde la terminal integrada. Localiza en el explorador de archivos de VS Codium la carpeta `__pycache__` que se genera junto a él y el fichero `.pyc` que contiene. Apoyándote en la tabla anterior y en lo que acabas de ver, en `ejercicio9.md` explica con tus palabras por qué en Python no tiene sentido hablar de "código ejecutable" de la misma forma que en C, y qué papel juega ese `.pyc`.
+**🧪 Ejercicio 10 — El esquema en distintos lenguajes**
+Crea `ejercicio10.py` con cualquier instrucción sencilla (por ejemplo, un `print`) y ejecútalo una vez desde la terminal integrada. Localiza en el explorador de archivos de VS Codium la carpeta `__pycache__` que se genera junto a él y el fichero `.pyc` que contiene. Apoyándote en la tabla anterior y en lo que acabas de ver, en `ejercicio10.md` explica con tus palabras por qué en Python no tiene sentido hablar de "código ejecutable" de la misma forma que en C, y qué papel juega ese `.pyc`.
 
-**🧪 Ejercicio 10 — Compilado vs. interpretado, cronómetro en mano**
-Usamos C solo para esta comparación puntual — no hace falta escribirlo ni dominarlo, solo compilarlo, ejecutarlo y medirlo. En tu carpeta `UD01`, crea `ejercicio10.c` con este código ya escrito:
+**🧪 Ejercicio 11 — Compilado vs. interpretado, cronómetro en mano**
+Usamos C solo para esta comparación puntual — no hace falta escribirlo ni dominarlo, solo compilarlo, ejecutarlo y medirlo. En tu carpeta `UD01`, crea `ejercicio11.c` con este código ya escrito:
 
 ```c
 #include <stdio.h>
@@ -376,11 +413,11 @@ int main() {
 }
 ```
 
-Ahora escribe tú mismo, en `ejercicio10.py`, la versión equivalente en Python (un bucle que sume los números del 1 al 10 millones — este sí en el lenguaje que ya conoces). Desde la terminal integrada, compila y ejecuta la versión en C (`gcc ejercicio10.c -o ejercicio10 && ./ejercicio10`); ejecuta directamente la versión en Python. Cronometra ambas con `time` (`time ./ejercicio10` y `time python ejercicio10.py`). En `ejercicio10.md`, recoge los tiempos y explica la diferencia según lo visto en este punto.
+Ahora escribe tú mismo, en `ejercicio11.py`, la versión equivalente en Python (un bucle que sume los números del 1 al 10 millones — este sí en el lenguaje que ya conoces). Desde la terminal integrada, compila y ejecuta la versión en C (`gcc ejercicio11.c -o ejercicio11 && ./ejercicio11`); ejecuta directamente la versión en Python. Cronometra ambas con `time` (`time ./ejercicio11` y `time python ejercicio11.py`). En `ejercicio11.md`, recoge los tiempos y explica la diferencia según lo visto en este punto.
 
 ---
 
-## 4. Código intermedio y máquinas virtuales (CA 1d)
+## 5. Código intermedio y máquinas virtuales (CA 1d)
 
 Según cómo se trate el código, un ejecutable puede ser:
 
@@ -394,7 +431,7 @@ Algunos lenguajes, como Java, resuelven la portabilidad con una **máquina virtu
 | **De sistema** | Simula un ordenador completo (arquitectura + SO) dentro de otro | VirtualBox, VMware |
 | **De proceso** | Ejecuta el código intermedio (bytecode) de un lenguaje concreto, independizándolo del hardware real | JVM (Java Virtual Machine) |
 
-La **JVM** ejecuta el *bytecode* que genera el compilador de Java (los ficheros `.class`) — interpretándolo instrucción a instrucción o, en las partes que más se repiten, compilándolo sobre la marcha (JIT, como vimos en el punto 3) —, traduciéndolo en ambos casos a las instrucciones del hardware concreto donde se ejecuta. Por eso el mismo `.class` corre en Windows, Linux o macOS sin recompilar, siempre que haya una JVM instalada: "*write once, run anywhere*".
+La **JVM** ejecuta el *bytecode* que genera el compilador de Java (los ficheros `.class`) — interpretándolo instrucción a instrucción o, en las partes que más se repiten, compilándolo sobre la marcha (JIT, como vimos en el punto 4) —, traduciéndolo en ambos casos a las instrucciones del hardware concreto donde se ejecuta. Por eso el mismo `.class` corre en Windows, Linux o macOS sin recompilar, siempre que haya una JVM instalada: "*write once, run anywhere*".
 
 > 🕰️ **Por qué existe la JVM**: a mediados de los años 90 cada sistema operativo tenía su propio formato de ejecutable, y distribuir un programa para varias plataformas obligaba a compilarlo y mantenerlo por separado para cada una. Sun Microsystems diseñó Java (1995) con la JVM como pieza central para resolver justo ese problema: compilar una sola vez a bytecode y dejar que la máquina virtual se encargue de adaptarse al sistema real. La necesidad que resolvió sigue vigente — es la misma razón de fondo por la que hoy existen los contenedores y WebAssembly, que vemos a continuación.
 
@@ -411,12 +448,12 @@ Programa.class ──(java, se ejecuta sobre la JVM)──▶  el programa corre
 
 > 📡 **Cambiando activamente: WebAssembly (Wasm)**. Es la evolución más reciente de la misma idea de "bytecode portable", pero pensada para el navegador: un formato que permite ejecutar código escrito en C, C++, Rust o incluso Java dentro de una página web, a una velocidad cercana a la nativa — algo que JavaScript por sí solo no ofrece. No sustituye a JavaScript, lo complementa en las partes de una aplicación web que necesitan más rendimiento (edición de imagen o vídeo en el propio navegador, videojuegos, cálculo intensivo). En el desarrollo web actual es donde más está creciendo esta idea de "máquina virtual de proceso".
 
-**🧪 Ejercicio 11 — JVM y WebAssembly, dos máquinas virtuales de proceso**
-Vuelve a leer el aviso sobre WebAssembly de este punto — no hace falta buscar nada más. En `ejercicio11.md`, responde con tus propias palabras: (1) ¿en qué se parecen la JVM y WebAssembly como máquinas virtuales de proceso? (2) ¿dónde se usa cada una, y por qué WebAssembly no sustituye a JavaScript sino que lo complementa?
+**🧪 Ejercicio 12 — JVM y WebAssembly, dos máquinas virtuales de proceso**
+Vuelve a leer el aviso sobre WebAssembly de este punto — no hace falta buscar nada más. En `ejercicio12.md`, responde con tus propias palabras: (1) ¿en qué se parecen la JVM y WebAssembly como máquinas virtuales de proceso? (2) ¿dónde se usa cada una, y por qué WebAssembly no sustituye a JavaScript sino que lo complementa?
 
 ---
 
-## 5. Clasificación de los lenguajes de programación (CA 1e)
+## 6. Clasificación de los lenguajes de programación (CA 1e)
 
 No hay una única forma de clasificar los lenguajes; estas son las más habituales.
 
@@ -425,10 +462,10 @@ No hay una única forma de clasificar los lenguajes; estas son las más habitual
 | Tipo | Cómo funciona | Ejemplos | Dónde se usan más |
 |---|---|---|---|
 | **Compilados** | El código fuente se traduce entero, de una vez, a un ejecutable | C, C++, Pascal | Software de escritorio (ejecución rápida, ficheros más pesados) |
-| **Interpretados** | Un intérprete ejecuta el código sin generar un ejecutable nativo — muchos (como Python) compilan antes internamente a un bytecode que después procesan (punto 3) | Python, PHP, JavaScript | Entornos web y scripting (menos recursos, más lentos) |
+| **Interpretados** | Un intérprete ejecuta el código sin generar un ejecutable nativo — muchos (como Python) compilan antes internamente a un bytecode que después procesan (punto 4) | Python, PHP, JavaScript | Entornos web y scripting (menos recursos, más lentos) |
 | **Híbridos / virtuales** | Se compilan a código intermedio (bytecode), que luego interpreta una máquina virtual | Java, C# (en parte) | Aplicaciones que deben correr en varias plataformas sin recompilar |
 
-> 💡 Esta clasificación es la primera aproximación más útil para empezar, pero no es una etiqueta rígida y excluyente: como vimos en el punto 3, la frontera entre compilado e interpretado cada vez es más difusa (motores JIT como V8, herramientas como GraalVM...). Sirve para entender el modelo *dominante* de cada lenguaje, no para encasillarlo.
+> 💡 Esta clasificación es la primera aproximación más útil para empezar, pero no es una etiqueta rígida y excluyente: como vimos en el punto 4, la frontera entre compilado e interpretado cada vez es más difusa (motores JIT como V8, herramientas como GraalVM...). Sirve para entender el modelo *dominante* de cada lenguaje, no para encasillarlo.
 
 **Según el nivel de abstracción** (cuánto se parecen al lenguaje natural frente al lenguaje máquina):
 
@@ -468,27 +505,27 @@ Por último, en el contexto de aplicaciones web es habitual distinguir entre **f
 
 > 📡 **Actualidad**: la popularidad de los lenguajes cambia con el tiempo. El **índice TIOBE** (`tiobe.com/tiobe-index`) es una de las referencias más consultadas para ver qué lenguajes están en auge o en declive — pero es una fotografía mensual, no una verdad fija: conviene consultarlo actualizado en vez de memorizar un ranking.
 
-**🧪 Ejercicio 12 — Clasifica estos lenguajes**
-En `ejercicio12.md`, para Python, Java, C y JavaScript, indica en una tabla Markdown: tipo de ejecución (compilado/interpretado/híbrido), nivel de abstracción y paradigma principal. Justifica cada respuesta en una frase.
+**🧪 Ejercicio 13 — Clasifica estos lenguajes**
+En `ejercicio13.md`, para Python, Java, C y JavaScript, indica en una tabla Markdown: tipo de ejecución (compilado/interpretado/híbrido), nivel de abstracción y paradigma principal. Justifica cada respuesta en una frase.
 
-**🧪 Ejercicio 13 — El mismo problema, dos paradigmas**
-Para el dashboard de finanzas personales, plantea la tarea "obtener los usuarios que han gastado más de 100 € este mes". En `ejercicio13.md`, escribe una solución imperativa en pseudocódigo (con un bucle y una condición); en `ejercicio13.sql`, la solución declarativa (una sola consulta `SELECT` — no hace falta ejecutarla todavía, solo que la sintaxis sea correcta). En `ejercicio13.md`, compara ambas: ¿cuál describe el "cómo" y cuál el "qué"?
+**🧪 Ejercicio 14 — El mismo problema, dos paradigmas**
+Para el dashboard de finanzas personales, plantea la tarea "obtener los usuarios que han gastado más de 100 € este mes". En `ejercicio14.md`, escribe una solución imperativa en pseudocódigo (con un bucle y una condición); en `ejercicio14.sql`, la solución declarativa (una sola consulta `SELECT` — no hace falta ejecutarla todavía, solo que la sintaxis sea correcta). En `ejercicio14.md`, compara ambas: ¿cuál describe el "cómo" y cuál el "qué"?
 
 ---
 
-## 6. Herramientas del desarrollo de software (CA 1f)
+## 7. Herramientas del desarrollo de software (CA 1f)
 
 Además del lenguaje, un desarrollador se apoya en herramientas que dan soporte a cada fase del ciclo de vida. Esta unidad solo las **clasifica**; profundizaremos en varias de ellas en unidades posteriores.
 
-### 6.1. Editor de código / IDE
+### 7.1. Editor de código / IDE
 
 Un editor de texto simple (el Bloc de notas) también puede escribir código, pero un **IDE** (*Integrated Development Environment*) añade herramientas integradas para todo el ciclo de codificación: autocompletado, resaltado de sintaxis, detección de errores mientras escribes y depuración incorporada. Ejemplos: Visual Studio Code, Eclipse, IntelliJ. **Se trabaja en detalle en la UP2.**
 
-### 6.2. Compilador / intérprete
+### 7.2. Compilador / intérprete
 
-Traduce código fuente a código objeto, intermedio o ejecutable, o lo ejecuta mediante un intérprete o máquina virtual — es la herramienta que materializa todo lo visto en los puntos 3 y 5 de esta unidad. Ejemplos: `javac`/`java`, el propio intérprete de Python, GCC. **UP1-UP2.**
+Traduce código fuente a código objeto, intermedio o ejecutable, o lo ejecuta mediante un intérprete o máquina virtual — es la herramienta que materializa todo lo visto en los puntos 4 y 6 de esta unidad. Ejemplos: `javac`/`java`, el propio intérprete de Python, GCC. **UP1-UP2.**
 
-### 6.3. Control de versiones
+### 7.3. Control de versiones
 
 Registra el historial de cambios del código y permite que varias personas trabajen sobre el mismo proyecto sin sobrescribirse — ya lo adelantamos en el punto 2.3, al hablar de la fase de Codificación. Ejemplos: Git, GitHub. **UP3.**
 
@@ -498,11 +535,11 @@ $ git add cambios.py
 $ git commit -m "Primer commit"
 ```
 
-### 6.4. Depuración y pruebas
+### 7.4. Depuración y pruebas
 
 Permite ejecutar el programa paso a paso, inspeccionar el valor de las variables en cada momento, y automatizar las comprobaciones vistas en el punto 2.4 (pruebas unitarias, de integración...) en vez de repetirlas a mano cada vez. Ejemplos: el depurador integrado del IDE, JUnit. **UP5.**
 
-### 6.5. Gestión de dependencias y construcción del proyecto
+### 7.5. Gestión de dependencias y construcción del proyecto
 
 Instala librerías externas (retomando el concepto de librería del punto 1.1) sin tener que descargarlas e integrarlas a mano, y automatiza pasos repetitivos como compilar, ejecutar pruebas o empaquetar el proyecto. Ejemplos: `pip`, Maven, npm. **UP2.**
 
@@ -515,21 +552,21 @@ $ source .venv/bin/activate               # lo activa (Linux/Mac); en Windows: .
 (.venv) $ pip freeze > requirements.txt   # registra las dependencias del proyecto
 ```
 
-> 📡 **Un paso más: contenedores**. Un entorno virtual aísla las dependencias de Python, pero no el resto del sistema (versión del sistema operativo, otros programas instalados...). Cuando ese aislamiento hay que llevarlo también ahí — por ejemplo, para que la aplicación corra igual en cualquier ordenador o servidor —, se usa un **contenedor** (Docker es el más conocido), que ya vimos como concepto en el punto 4. Es la misma idea de fondo que un `venv`, pero un nivel más abajo — con base y práctica real lo trabajaremos en la UP2.
+> 📡 **Un paso más: contenedores**. Un entorno virtual aísla las dependencias de Python, pero no el resto del sistema (versión del sistema operativo, otros programas instalados...). Cuando ese aislamiento hay que llevarlo también ahí — por ejemplo, para que la aplicación corra igual en cualquier ordenador o servidor —, se usa un **contenedor** (Docker es el más conocido), que ya vimos como concepto en el punto 5. Es la misma idea de fondo que un `venv`, pero un nivel más abajo — con base y práctica real lo trabajaremos en la UP2.
 
-### 6.6. Análisis y documentación de código
+### 7.6. Análisis y documentación de código
 
 Revisa automáticamente la calidad del código (código duplicado, mal estilo, posibles vulnerabilidades) y genera documentación técnica a partir de los propios comentarios del código fuente. Ejemplos: SonarQube, Javadoc. **UP7.**
 
-> 📡 **Cambiando activamente: asistentes de código con IA**. Herramientas como GitHub Copilot, o el autocompletado inteligente ya integrado en muchos IDEs actuales, sugieren código mientras escribes apoyándose en modelos de lenguaje. No son una categoría nueva: se integran dentro del editor/IDE (6.1). Están cambiando cómo se escribe código día a día, pero siguen haciendo falta los mismos fundamentos de esta unidad para revisar y entender lo que sugieren — no para copiarlo sin más.
+> 📡 **Cambiando activamente: asistentes de código con IA**. Herramientas como GitHub Copilot, o el autocompletado inteligente ya integrado en muchos IDEs actuales, sugieren código mientras escribes apoyándose en modelos de lenguaje. No son una categoría nueva: se integran dentro del editor/IDE (7.1). Están cambiando cómo se escribe código día a día, pero siguen haciendo falta los mismos fundamentos de esta unidad para revisar y entender lo que sugieren — no para copiarlo sin más.
 
 > 💡 Ejemplo integrador: si más adelante desarrollamos un **dashboard de finanzas personales** en Python con una base de datos SQLite, usaríamos como mínimo: un IDE (VS Code) para escribir el código, Git/GitHub para el control de versiones, `pip` para instalar librerías (por ejemplo, para generar gráficos) y `pytest` para probar que los cálculos son correctos. Cada una de esas herramientas cubre una funcionalidad distinta dentro del desarrollo.
 
-**🧪 Ejercicio 14 — Herramientas para un proyecto**
-Para el proyecto de "dashboard de finanzas personales" del punto 6, en `ejercicio14.md` indica qué herramienta de cada categoría de la tabla usarías y por qué, aunque hoy no sepas usarlas todavía (búscalo si hace falta).
+**🧪 Ejercicio 15 — Herramientas para un proyecto**
+Para el proyecto de "dashboard de finanzas personales" del punto 7, en `ejercicio15.md` indica qué herramienta de cada categoría de la tabla usarías y por qué, aunque hoy no sepas usarlas todavía (búscalo si hace falta).
 
-**🧪 Ejercicio 15 — Instala y prueba una herramienta**
-Elige una categoría de la tabla anterior con una herramienta que no conozcas todavía (por ejemplo, un linter de análisis de código o un gestor de dependencias distinto al visto en clase) e instálala en tu equipo. Pruébala desde la terminal integrada de VS Codium sobre alguno de los ficheros que ya tienes en tu carpeta `UD01`. En `ejercicio15.md`, documenta en 4-5 líneas: qué problema resuelve, qué comando usaste para instalarla, y el resultado de haberla ejecutado.
+**🧪 Ejercicio 16 — Instala y prueba una herramienta**
+Elige una categoría de la tabla anterior con una herramienta que no conozcas todavía (por ejemplo, un linter de análisis de código o un gestor de dependencias distinto al visto en clase) e instálala en tu equipo. Pruébala desde la terminal integrada de VS Codium sobre alguno de los ficheros que ya tienes en tu carpeta `UD01`. En `ejercicio16.md`, documenta en 4-5 líneas: qué problema resuelve, qué comando usaste para instalarla, y el resultado de haberla ejecutado.
 
 ---
 
@@ -538,7 +575,7 @@ Elige una categoría de la tabla anterior con una herramienta que no conozcas to
 Elige una aplicación que uses habitualmente en el móvil (una app de mensajería, de banca, de transporte...). Investiga primero qué tecnologías tiene documentadas públicamente (su web de desarrolladores, ofertas de empleo de la empresa...); cuando no encuentres nada verificable, formula una hipótesis razonada y dilo explícitamente como tal — distinguir "lo sé", "lo he encontrado documentado" y "lo estoy deduciendo" es una habilidad tan importante como el contenido técnico. En VS Codium, crea `reto.md` dentro de tu carpeta `UD01` con una ficha que incluya:
 
 1. Una hipótesis razonada sobre qué lenguaje(s) de programación se usaron para su parte visible y para su lógica interna (front-end/back-end), con al menos un argumento técnico de por qué.
-2. Una hipótesis sobre si el ejecutable que corre en tu móvil es compilado, interpretado o híbrido (justifícalo con lo que sepas de Android/iOS y las máquinas virtuales vistas en el punto 4).
+2. Una hipótesis sobre si el ejecutable que corre en tu móvil es compilado, interpretado o híbrido (justifícalo con lo que sepas de Android/iOS y las máquinas virtuales vistas en el punto 5).
 3. Un esquema de las 7 fases del ciclo de vida aplicado a esa app: qué requisitos crees que se recogieron en el Análisis, y qué tipo de Mantenimiento recibe (busca su historial de actualizaciones en la tienda de aplicaciones como pista).
 
 **Plantilla orientativa para `reto.md`** (puedes seguirla tal cual o adaptarla):
@@ -553,7 +590,7 @@ Elige una aplicación que uses habitualmente en el móvil (una app de mensajerí
 
 ## 2. Compilado, interpretado o híbrido
 - Hipótesis: ...
-- Justificación (Android/iOS, máquinas virtuales del punto 4): ...
+- Justificación (Android/iOS, máquinas virtuales del punto 5): ...
 
 ## 3. Ciclo de vida aplicado
 - Requisitos que crees que se recogieron en el Análisis: ...
@@ -570,15 +607,17 @@ Elige una aplicación que uses habitualmente en el móvil (una app de mensajerí
 
 **1. El programa y los componentes del sistema** El software se clasifica por su forma (programa, librería, aplicación, suite) y por su función (software de sistema vs. de aplicación). Un programa en ejecución se apoya en memoria (RAM, volátil), procesador (ciclo fetch-decode-execute) y periféricos (entrada, salida o ambas) — programar es solo la fase de codificación dentro de desarrollar software, que además analiza, diseña, prueba, documenta y mantiene.
 
-**2. El ciclo de vida del software** Modelo en cascada, en 7 fases: análisis (requisitos funcionales/no funcionales), diseño (arquitectónico y detallado, UML), codificación (buenas prácticas), pruebas (caja negra/blanca, niveles), documentación de usuario, explotación (estrategias de implantación) y mantenimiento (correctivo, evolutivo, adaptativo, perfectivo) — cada fase genera su propia documentación y con roles que pueden solaparse. La cascada es el modelo de referencia para entender las fases, pero hoy la mayoría de equipos usa metodologías ágiles (CA 1g, se ven en la UP6); otros modelos clásicos (iterativo-incremental, en espiral, prototipado) sí forman parte de esta unidad.
+**2. El ciclo de vida del software** Modelo en cascada, en 7 fases: análisis (requisitos funcionales/no funcionales), diseño (arquitectónico y detallado, UML), codificación (buenas prácticas), pruebas (caja negra/blanca, niveles), documentación de usuario, explotación (estrategias de implantación) y mantenimiento (correctivo, evolutivo, adaptativo, perfectivo) — cada fase genera su propia documentación y con roles que pueden solaparse. La cascada es el modelo de referencia para entender las fases, pero hoy la mayoría de equipos usa metodologías ágiles (ver punto 3); otros modelos clásicos (iterativo-incremental, en espiral, prototipado) sí forman parte de esta unidad.
 
-**3. Código fuente, objeto y ejecutable** En compilación directa (C), el código fuente se compila a código objeto y este se enlaza (de forma estática o dinámica) con librerías y particularidades del SO para dar el ejecutable nativo final; en el modelo de código intermedio (Java), el fuente compila a bytecode y es una máquina virtual, no un enlazador, quien lo ejecuta — código objeto y código intermedio no son sinónimos, aunque ambos sean un paso a medio camino. El esquema se ve distinto según el lenguaje sea compilado, híbrido o interpretado, y puede necesitar ejecutables distintos según la plataforma destino. La frontera compilado/interpretado ya no es tan tajante: motores JIT como V8 compilan JavaScript sobre la marcha, y herramientas como GraalVM compilan bytecode Java a ejecutable nativo.
+**3. Metodologías ágiles de desarrollo** Surgen frente a las limitaciones de la cascada (documentación extensa, una sola entrega final, poco margen para el cambio) — el Manifiesto Ágil (2001) prioriza el software funcionando y la colaboración frecuente con el cliente. Scrum (sprints, roles, reuniones fijas) y Kanban (tablero visual, límites de WIP, flujo continuo) son sus dos técnicas más usadas; la cascada encaja mejor con requisitos cerrados o muy regulados, lo ágil con proyectos que evolucionan sobre la marcha — como el dashboard de finanzas personales de esta unidad.
 
-**4. Código intermedio y máquinas virtuales** Las máquinas virtuales (de sistema o de proceso) permiten portabilidad: la JVM ejecuta el mismo bytecode `.class` en cualquier sistema operativo, la idea detrás de "write once, run anywhere" — Python y .NET siguen un planteamiento similar, y nació para resolver la falta de portabilidad entre sistemas operativos de los años 90. Los contenedores (Docker) y WebAssembly (bytecode portable para el navegador) son evoluciones más recientes de la misma idea.
+**4. Código fuente, objeto y ejecutable** En compilación directa (C), el código fuente se compila a código objeto y este se enlaza (de forma estática o dinámica) con librerías y particularidades del SO para dar el ejecutable nativo final; en el modelo de código intermedio (Java), el fuente compila a bytecode y es una máquina virtual, no un enlazador, quien lo ejecuta — código objeto y código intermedio no son sinónimos, aunque ambos sean un paso a medio camino. El esquema se ve distinto según el lenguaje sea compilado, híbrido o interpretado, y puede necesitar ejecutables distintos según la plataforma destino. La frontera compilado/interpretado ya no es tan tajante: motores JIT como V8 compilan JavaScript sobre la marcha, y herramientas como GraalVM compilan bytecode Java a ejecutable nativo.
 
-**5. Clasificación de los lenguajes** Se clasifican según cómo se ejecutan (compilados, interpretados, híbridos), su nivel de abstracción (bajo, medio, alto) y su paradigma dominante (imperativo, orientado a objetos, funcional, declarativo — la mayoría combina varios, y un mismo problema se resuelve de forma distinta en cada paradigma) — además de la distinción front-end/back-end, y el perfil full-stack que domina ambas.
+**5. Código intermedio y máquinas virtuales** Las máquinas virtuales (de sistema o de proceso) permiten portabilidad: la JVM ejecuta el mismo bytecode `.class` en cualquier sistema operativo, la idea detrás de "write once, run anywhere" — Python y .NET siguen un planteamiento similar, y nació para resolver la falta de portabilidad entre sistemas operativos de los años 90. Los contenedores (Docker) y WebAssembly (bytecode portable para el navegador) son evoluciones más recientes de la misma idea.
 
-**6. Herramientas del desarrollo de software** IDE, compiladores/intérpretes, control de versiones, depuración y pruebas, gestión de dependencias, y análisis/documentación de código — cada categoría da soporte a una fase distinta del ciclo de vida del punto 2, con comandos y ejemplos reales (Git, pip, venv) que se trabajarán en detalle a partir de la UP2, donde entrarán también los contenedores (Docker); los asistentes de código con IA son la novedad más activa dentro del editor/IDE, sin sustituir los fundamentos de esta unidad.
+**6. Clasificación de los lenguajes** Se clasifican según cómo se ejecutan (compilados, interpretados, híbridos), su nivel de abstracción (bajo, medio, alto) y su paradigma dominante (imperativo, orientado a objetos, funcional, declarativo — la mayoría combina varios, y un mismo problema se resuelve de forma distinta en cada paradigma) — además de la distinción front-end/back-end, y el perfil full-stack que domina ambas.
+
+**7. Herramientas del desarrollo de software** IDE, compiladores/intérpretes, control de versiones, depuración y pruebas, gestión de dependencias, y análisis/documentación de código — cada categoría da soporte a una fase distinta del ciclo de vida del punto 2, con comandos y ejemplos reales (Git, pip, venv) que se trabajarán en detalle a partir de la UP2, donde entrarán también los contenedores (Docker); los asistentes de código con IA son la novedad más activa dentro del editor/IDE, sin sustituir los fundamentos de esta unidad.
 
 ---
 
