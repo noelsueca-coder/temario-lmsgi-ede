@@ -34,7 +34,7 @@
 
 <div style="page-break-after: always;"></div>
 
-**RA cobert:** RA1 — *Reconeix els elements i les eines que intervenen en el desenvolupament d'un programa informàtic, analitzant les característiques i les fases en què actuen fins a arribar a la seua posada en funcionament* (CA 1a-1g; en esta unitat es desenvolupen els criteris 1a-1f)
+**RA cobert:** RA1 (CA 1a-1f) — Reconeix els elements i les eines que intervenen en el desenvolupament d'un programa informàtic, analitzant les característiques i les fases en què actuen fins a arribar a la seua posada en funcionament.
 
 > ⚠️ **Nota de programació**: el CA 1g (metodologies àgils de desenvolupament de software) **no** es treballa en esta unitat — està assignat a la UP6 (Gestió de projectes informàtics), on l'alumnat ja coneix el cicle de vida i les fases que es presenten ací. El RA1 complet queda programat igualment: 1a-1f ací, 1g en la UP6.
 
@@ -43,6 +43,13 @@
 > 💻 **Com treballar els exercicis d'esta unitat**: crea en VS Codium una carpeta `UD01_ElTeuNom` — l'anirem usant en tots els exercicis de la unitat. Quan un exercici demane codi, crea'l com a fitxer (`.py`, `.java`, `.c`...) dins d'eixa carpeta i executa'l des de la terminal integrada de VS Codium (`Terminal → Nova terminal`). Quan demane raonar, classificar o redactar, escriu la resposta en un fitxer Markdown (`exerciciN.md`) dins de la mateixa carpeta, en compte de en paper. Així, des del primer dia, treballes dins de l'editor que usaràs durant tot el cicle — instal·lar-lo i configurar-lo a fons (i comparar-lo amb altres IDE) es veu en la UP2; ací simplement li anem agafant el tranquillo.
 
 > 🐍 **Per què a vegades canviem de llenguatge**: en esta unitat, Python és el llenguatge de treball habitual per als exercicis (el mateix que usaràs en Programació). Quan algun exercici use Java, C o SQL en el seu lloc, és perquè eixe llenguatge concret és qui millor il·lustra el concepte d'eixe punt (compilació nativa, codi intermedi i màquina virtual, paradigma declaratiu) — no cal que aprengues la seua sintaxi a fons, només que seguisques l'exemple pas a pas i entengues la idea que demostra.
+
+## 🎯 Conceptes clau
+
+En acabar esta unitat sabràs:
+- Distingir programa, software (per forma i per funció) i explicar com interactuen memòria, processador i perifèrics quan un programa s'executa.
+- Reconèixer les fases del cicle de vida del software (model en cascada) i què produïx cadascuna, junt amb les seues alternatives.
+- Diferenciar codi font, objecte, intermedi i executable, i classificar llenguatges de programació i eines de desenvolupament segons la fase a què donen suport.
 
 ---
 
@@ -172,6 +179,12 @@ Tot açò es recull en l'**ERS (Especificació de Requisits de Software)**, junt
 > 🕰️ **Què seguix vigent i què és ja història**: durant dècades, l'estàndard de referència per a redactar una ERS va ser **IEEE 830** (1998) — hui retirat. El substituïx **ISO/IEC/IEEE 29148**, la norma vigent per a especificar requisits de software. El contingut de fons (què és un requisit funcional o no funcional) a penes ha canviat; el que canvia és l'estàndard formal que regula com documentar-lo.
 
 ### 2.2. Disseny
+
+| Diagrama UML | Què mostra | En esta unitat |
+|---|---|---|
+| De casos d'ús | Què pot fer cada tipus d'usuari | Només es reconeix que existix |
+| De seqüència | En quin ordre es comuniquen els components | Només es reconeix que existix |
+| De classes | Quines entitats existixen, amb els seus atributs, mètodes i relacions | S'aprofundix — es retoma en la UD4 |
 
 Es definix el funcionament del sistema **sense entrar encara en el codi**, a dos nivells:
 
@@ -339,6 +352,8 @@ $ python programa.py        # no genera un executable natiu a banda — ho proce
 ```
 
 > 📡 **Canviant activament: la frontera es difumina.** Motors com V8 (el que usen Chrome i Node.js) ja no només interpreten JavaScript línia a línia: compilen sobre la marxa, mentre el programa s'executa, les parts de codi que més es repetixen — s'anomena compilació **JIT** (*just-in-time*). En sentit contrari, eines com GraalVM permeten compilar bytecode Java directament a un executable natiu (`native-image`), sense necessitar una JVM en l'equip final. La classificació compilat/interpretat/híbrid del punt 5 seguix sent útil per a entendre la idea de fons, però cada vegada hi ha més llenguatges que mesclen les tres estratègies.
+
+> 🧯 **Pla B si no pots instal·lar el JDK**: usa un compilador Java en línia (per exemple, jdoodle.com/online-java-compiler) per a completar l'exercici sense instal·lar res localment — el que s'avalua és que entengues el procés font → bytecode → execució, no la instal·lació en si. Si disposes de la VM portàtil del cicle, el JDK ja ve preinstal·lat ahí: és el lloc ideal per a tindre'l llest per endavant.
 
 **🧪 Exercici 8 — De codi font a executable**
 Esta és l'única vegada en la unitat que usem Java per a un exercici de codi: és el llenguatge que millor il·lustra el model de codi intermedi — no cal que li agafes el gust a la seua sintaxi. Instal·la un JDK si no el tens, i en la teua carpeta `UD01` crea `HolaMundo.java` amb un programa que imprimisca el teu nom. Compila'l des de la terminal integrada amb `javac HolaMundo.java`. Localitza en l'explorador de fitxers de VS Codium el fitxer `.class` generat i executa'l amb `java HolaMundo`. En `exercici8.md`, explica amb les teues paraules què representa cadascun dels tres fitxers/moments (font, codi intermedi, execució) en este procés.

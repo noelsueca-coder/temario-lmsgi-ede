@@ -34,7 +34,7 @@
 
 <div style="page-break-after: always;"></div>
 
-**RA cubierto:** RA1 — *Reconoce los elementos y herramientas que intervienen en el desarrollo de un programa informático, analizando sus características y las fases en que actúan hasta llegar a su puesta en funcionamiento* (CA 1a-1g; en esta unidad se desarrollan los criterios 1a-1f)
+**RA cubierto:** RA1 (CA 1a-1f) — Reconoce los elementos y herramientas que intervienen en el desarrollo de un programa informático, analizando sus características y las fases en que actúan hasta llegar a su puesta en funcionamiento.
 
 > ⚠️ **Nota de programación**: el CA 1g (metodologías ágiles de desarrollo de software) **no** se trabaja en esta unidad — está asignado a la UP6 (Gestión de proyectos informáticos), donde el alumnado ya conoce el ciclo de vida y las fases que se presentan aquí. El RA1 completo queda programado igualmente: 1a-1f aquí, 1g en la UP6.
 
@@ -43,6 +43,13 @@
 > 💻 **Cómo trabajar los ejercicios de esta unidad**: crea en VS Codium una carpeta `UD01_TuNombre` — la iremos usando en todos los ejercicios de la unidad. Cuando un ejercicio pida código, créalo como archivo (`.py`, `.java`, `.c`...) dentro de esa carpeta y ejecútalo desde la terminal integrada de VS Codium (`Terminal → Nueva terminal`). Cuando pida razonar, clasificar o redactar, escribe la respuesta en un archivo Markdown (`ejercicioN.md`) dentro de la misma carpeta, en vez de en papel. Así, desde el primer día, trabajas dentro del editor que usarás durante todo el ciclo — instalarlo y configurarlo a fondo (y compararlo con otros IDEs) se ve en la UP2; aquí simplemente le vamos cogiendo la mano.
 
 > 🐍 **Por qué a veces cambiamos de lenguaje**: en esta unidad, Python es el lenguaje de trabajo habitual para los ejercicios (el mismo que usarás en Programación). Cuando algún ejercicio use Java, C o SQL en su lugar, es porque ese lenguaje concreto es quien mejor ilustra el concepto de ese punto (compilación nativa, código intermedio y máquina virtual, paradigma declarativo) — no hace falta que aprendas su sintaxis a fondo, solo que sigas el ejemplo paso a paso y entiendas la idea que demuestra.
+
+## 🎯 Conceptos clave
+
+Al terminar esta unidad sabrás:
+- Distinguir programa, software (por forma y por función) y explicar cómo interactúan memoria, procesador y periféricos cuando un programa se ejecuta.
+- Reconocer las fases del ciclo de vida del software (modelo en cascada) y qué produce cada una, junto con sus alternativas.
+- Diferenciar código fuente, objeto, intermedio y ejecutable, y clasificar lenguajes de programación y herramientas de desarrollo según la fase a la que dan soporte.
 
 ---
 
@@ -172,6 +179,12 @@ Todo esto se recoge en la **ERS (Especificación de Requisitos de Software)**, j
 > 🕰️ **Qué sigue vigente y qué es ya historia**: durante décadas, el estándar de referencia para redactar una ERS fue **IEEE 830** (1998) — hoy retirado. Lo sustituye **ISO/IEC/IEEE 29148**, la norma vigente para especificar requisitos de software. El contenido de fondo (qué es un requisito funcional o no funcional) apenas ha cambiado; lo que cambia es el estándar formal que regula cómo documentarlo.
 
 ### 2.2. Diseño
+
+| Diagrama UML | Qué muestra | En esta unidad |
+|---|---|---|
+| De casos de uso | Qué puede hacer cada tipo de usuario | Solo se reconoce que existe |
+| De secuencia | En qué orden se comunican los componentes | Solo se reconoce que existe |
+| De clases | Qué entidades existen, con sus atributos, métodos y relaciones | Se profundiza — se retoma en la UD4 |
 
 Se define el funcionamiento del sistema **sin entrar todavía en el código**, a dos niveles:
 
@@ -339,6 +352,8 @@ $ python programa.py        # no genera un ejecutable nativo aparte — lo proce
 ```
 
 > 📡 **Cambiando activamente: la frontera se difumina.** Motores como V8 (el que usan Chrome y Node.js) ya no solo interpretan JavaScript línea a línea: compilan sobre la marcha, mientras el programa se ejecuta, las partes de código que más se repiten — se llama compilación **JIT** (*just-in-time*). En sentido contrario, herramientas como GraalVM permiten compilar bytecode Java directamente a un ejecutable nativo (`native-image`), sin necesitar una JVM en el equipo final. La clasificación compilado/interpretado/híbrido del punto 5 sigue siendo útil para entender la idea de fondo, pero cada vez hay más lenguajes que mezclan las tres estrategias.
+
+> 🧯 **Plan B si no puedes instalar el JDK**: usa un compilador Java online (por ejemplo, jdoodle.com/online-java-compiler) para completar el ejercicio sin instalar nada localmente — lo que se evalúa es que entiendas el proceso fuente → bytecode → ejecución, no la instalación en sí. Si dispones de la VM portátil del ciclo, el JDK ya viene preinstalado ahí: es el sitio ideal para tenerlo listo de antemano.
 
 **🧪 Ejercicio 8 — De código fuente a ejecutable**
 Esta es la única vez en la unidad que usamos Java para un ejercicio de código: es el lenguaje que mejor ilustra el modelo de código intermedio — no hace falta que le cojas el gusto a su sintaxis. Instala un JDK si no lo tienes, y en tu carpeta `UD01` crea `HolaMundo.java` con un programa que imprima tu nombre. Compílalo desde la terminal integrada con `javac HolaMundo.java`. Localiza en el explorador de archivos de VS Codium el fichero `.class` generado y ejecútalo con `java HolaMundo`. En `ejercicio8.md`, explica con tus palabras qué representa cada uno de los tres ficheros/momentos (fuente, código intermedio, ejecución) en este proceso.
