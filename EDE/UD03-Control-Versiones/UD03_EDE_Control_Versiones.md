@@ -196,9 +196,6 @@ Así, si el pipeline en la nube falla, `./run-tests.sh` demuestra exactamente lo
 **🧪 Ejercicio 5 — Pipeline de CI para el dashboard**
 Añade el archivo `.github/workflows/tests.yml` (con el contenido del punto 3.2, adaptado a tu proyecto) al repositorio del dashboard. Haz un commit y comprueba en la pestaña *Actions* de GitHub que se ejecuta. Si no tienes pruebas automáticas todavía, añade al menos una función sencilla con una prueba mínima (`assert`) para que el pipeline tenga algo real que ejecutar. Documenta en `ejercicio5.md` una captura del resultado (✅ o ❌) y, si algo falló, cómo lo solucionaste.
 
-**🧪 Ejercicio 6 — Diagrama del flujo completo**
-En `ejercicio6.md`, dibuja (con texto, tabla o un diagrama simple) el recorrido completo de un cambio en el dashboard: directorio de trabajo → staging → commit local → rama → Pull Request → fusión en `main` → disparo automático de CI. Señala en qué paso interviene cada comando de Git que has usado en esta unidad.
-
 ---
 
 ## 🎯 Reto de clase

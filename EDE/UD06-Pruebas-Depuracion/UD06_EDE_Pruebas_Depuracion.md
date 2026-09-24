@@ -22,18 +22,18 @@
 
 ## Índice
 
-1. Planificación y tipos de pruebas (CA 3a, 3c)
+1. Planificación y tipos de pruebas (CA 3a)
 2. Casos de prueba y pruebas de código (CA 3b)
-3. Pruebas unitarias, automatización y depuración (CA 3f, 3g, 3d, 3e)
-4. Documentación de incidencias (CA 3h)
-5. Dobles de prueba (CA 3i)
-6. Reto de clase
-7. Resumen de la unidad
-8. Para saber más
+3. Pruebas unitarias, automatización y depuración (CA 3c, 3d, 3e, 3f, 3g)
+4. Reto de clase
+5. Resumen de la unidad
+6. Para saber más
 
 <div style="page-break-after: always;"></div>
 
-**RA cubierto:** RA3 (CA 3a-3i) — Verifica el funcionament de programes, dissenyant i realitzant proves.
+**RA cubierto:** RA3 (CA 3a-3g) — Verifica el funcionament de programes, dissenyant i realitzant proves.
+
+> 📌 **Nota**: este curso salís de prácticas en empresa el 26/04, así que esta unidad se centra en las CA que se pueden trabajar y demostrar a fondo en el aula con el tiempo disponible. La documentación de incidencias (CA 3h) y los dobles de prueba (CA 3i) — también parte de RA3 — se trabajan y evalúan durante tu formación en la empresa.
 
 > 💻 **Cómo trabajar los ejercicios de esta unidad**: sigue en tu carpeta `UD06_TuNombre` dentro del repositorio del dashboard de finanzas. Usarás `pytest` como herramienta de pruebas — ya tienes el pipeline de CI de UD3 preparado para ejecutarlas automáticamente en cada `push`.
 
@@ -42,11 +42,11 @@
 Al terminar esta unidad sabrás:
 - Planificar y diseñar pruebas de código (funcionales, estructurales, de regresión) identificando casos de prueba, cobertura, valores límite y clases de equivalencia.
 - Escribir pruebas unitarias automatizadas y usar el depurador del IDE para localizar el origen de un fallo cuando una prueba no pasa.
-- Documentar incidencias con la información necesaria para que otra persona pueda reproducirlas, y usar dobles de prueba para aislar el componente que se está probando.
+- Integrar pruebas y depuración en un mismo flujo de trabajo: escribir una prueba, verla fallar, depurar la causa y comprobar que el pipeline de CI la valida.
 
 ---
 
-## 1. Planificación y tipos de pruebas (CA 3a, 3c)
+## 1. Planificación y tipos de pruebas (CA 3a)
 
 ### 1.1. Por qué planificar antes de probar "a lo que salga"
 
@@ -61,10 +61,6 @@ Probar código sin plan es ejecutar el programa y mirar si "parece que funciona"
 | **Funcional** | Que una funcionalidad hace lo que debe, desde fuera (sin mirar el código interno) | Registrar un gasto guarda correctamente el importe y la fecha |
 | **Estructural** | Que el código se ejecuta correctamente por dentro (ramas, condiciones) | Que ambas ramas del `if` de categorización automática se ejecutan al menos una vez |
 | **De regresión** | Que un cambio nuevo no ha roto algo que antes funcionaba | Al añadir presupuestos (UD4), las pruebas de UD1-UD3 del dashboard siguen pasando |
-
-### 1.3. Herramientas de depuración y prueba que ofrece el entorno
-
-El propio IDE no es solo un editor: trae integradas herramientas para probar y depurar sin salir de él — ejecutar pruebas con un clic, ver su resultado en un panel dedicado, y arrancar el depurador sobre cualquier línea de código. En los puntos 3.2 y 3.3 de esta unidad las usarás en detalle sobre pruebas unitarias reales.
 
 **🧪 Ejercicio 1 — Clasificar pruebas del dashboard**
 En `ejercicio1.md`, describe 3 pruebas distintas que aplicarías al dashboard de finanzas — una funcional, una estructural y una de regresión — indicando qué comprobaría cada una exactamente.
@@ -100,9 +96,9 @@ En `ejercicio2.md`, diseña 4 casos de prueba para la función que comprueba si 
 
 ---
 
-## 3. Pruebas unitarias, automatización y depuración (CA 3f, 3g, 3d, 3e)
+## 3. Pruebas unitarias, automatización y depuración (CA 3c, 3d, 3e, 3f, 3g)
 
-### 3.1. Pruebas unitarias con pytest
+### 3.1. Pruebas unitarias con pytest (CA 3f)
 
 Una **prueba unitaria** comprueba una única función o método de forma aislada.
 
@@ -121,9 +117,14 @@ def test_es_gasto_con_importe_positivo():
 
 > 🧾 **No hace falta memorizar la sintaxis de pytest**: tendrás la chuleta con `assert`, cómo nombrar funciones de prueba y cómo ejecutarlas. Se evalúa que la prueba compruebe lo correcto con la lógica correcta, no que recuerdes la sintaxis exacta sin consultarla.
 
-### 3.2. Depuración: puntos de ruptura y seguimiento paso a paso
+**🧪 Ejercicio 3 — Pruebas unitarias del dashboard**
+En `test_dashboard.py`, escribe al menos 4 pruebas unitarias nuevas (usando las técnicas del punto 2) para funciones del dashboard que aún no tengan prueba. Documenta en `ejercicio3.md` el resultado de ejecutarlas.
 
-Cuando una prueba **falla** y no es evidente por qué, el depurador del IDE (`▶️ Debug`, no `▶️ Run`) permite:
+### 3.2. Herramientas de depuración del entorno y puntos de ruptura (CA 3c, 3d)
+
+El propio IDE no es solo un editor: trae integradas herramientas para probar y depurar sin salir de él — ejecutar pruebas con un clic, ver su resultado en un panel dedicado, y arrancar el **depurador** sobre cualquier línea de código.
+
+Cuando una prueba **falla** y no es evidente por qué, el depurador (`▶️ Debug`, no `▶️ Run`) permite:
 
 - Colocar un **punto de ruptura** (*breakpoint*) en la línea donde algo no cuadra — la ejecución se detiene justo ahí.
 - **Avanzar paso a paso** (*step over* / *step into*) para ver exactamente qué hace el programa línea a línea.
@@ -135,73 +136,38 @@ Cuando una prueba **falla** y no es evidente por qué, el depurador del IDE (`�
 | Step into | Entra dentro de la función que se está llamando, línea a línea |
 | Continue | Reanuda la ejecución normal hasta el siguiente breakpoint |
 
-**🧪 Ejercicio 3 — Encontrar un fallo con el depurador**
-Se te entregará una función del dashboard con un error sutil (por ejemplo, en el cálculo de un presupuesto) y una prueba que falla al ejecutarla. En `ejercicio3.md`, documenta: dónde colocaste el breakpoint, qué viste al avanzar paso a paso, y en qué línea exacta estaba el error.
+**🧪 Ejercicio 4 — Encontrar un fallo con el depurador**
+Se te entregará una función del dashboard con un error sutil (por ejemplo, en el cálculo de un presupuesto) y una prueba que falla al ejecutarla. En `ejercicio4.md`, documenta: dónde colocaste el breakpoint, qué viste al avanzar paso a paso, y en qué línea exacta estaba el error.
 
-### 3.3. Depuración: inspeccionar y modificar en tiempo de ejecución
+### 3.3. Inspeccionar y modificar en tiempo de ejecución (CA 3e)
 
 Con la ejecución pausada en un breakpoint, el panel de **variables** del depurador muestra el valor de cada variable en ese momento exacto — y en muchos IDEs también permite **modificarlo** ahí mismo, sin parar y reescribir código, para comprobar al instante si un valor distinto habría evitado el fallo.
 
 > ⚠️ **Plan B si el depurador del IDE falla o no está disponible**: la depuración por `print()` sigue funcionando siempre, en cualquier entorno, sin ninguna extensión: intercala `print(variable)` en los puntos que quieras inspeccionar. Es menos cómodo que un depurador visual, pero nunca falla — buena idea tenerlo presente también en la VM portátil, donde puede que el depurador gráfico no esté configurado.
 
-### 3.4. Pruebas automáticas
+### 3.4. Pruebas automáticas (CA 3g)
 
 Ya viste en UD3 cómo un pipeline de CI (GitHub Actions) ejecuta las pruebas automáticamente en cada `push`. Esa es exactamente la forma de convertir las pruebas unitarias de este punto en **pruebas automáticas**: no dependen de que alguien se acuerde de ejecutarlas a mano.
 
-**🧪 Ejercicio 4 — Pruebas unitarias en el pipeline**
-Añade al menos 4 pruebas unitarias nuevas (usando las técnicas del punto 2) a `test_dashboard.py` y comprueba que tu pipeline de CI de UD3 las ejecuta correctamente en el siguiente `push`. Documenta en `ejercicio4.md` el resultado.
-
----
-
-## 4. Documentación de incidencias (CA 3h)
-
-Una incidencia mal documentada ("no funciona") no es reproducible por nadie más. Una incidencia bien documentada incluye:
-
-| Campo | Ejemplo |
-|---|---|
-| **Pasos para reproducir** | 1. Crear presupuesto de 100€ en "Ocio". 2. Registrar gasto de 100.01€ |
-| **Resultado esperado** | Debería mostrar aviso de presupuesto superado |
-| **Resultado obtenido** | No muestra ningún aviso |
-| **Entorno** | Python 3.12, rama `feature-presupuestos`, commit `a3f21e0` |
-
-**🧪 Ejercicio 5 — Documentar una incidencia real**
-Provoca deliberadamente un fallo en tu dashboard (o usa uno real que hayas encontrado). En `ejercicio5.md`, documéntalo con los 4 campos de la tabla anterior, de forma que otra persona pudiera reproducirlo sin preguntarte nada más.
-
----
-
-## 5. Dobles de prueba (CA 3i)
-
-Cuando una clase depende de otra que es lenta, cuesta dinero (una API externa) o aún no existe, se sustituye por un **doble de prueba** que simula su comportamiento.
-
-> 🗺️ **Mapa visual — tipos de doble de prueba**
-
-| Tipo | Qué hace | Ejemplo en el dashboard |
-|---|---|---|
-| **Dummy** | Se pasa como parámetro pero nunca se usa de verdad | Un `Usuario` vacío que solo hace falta para que compile una llamada |
-| **Stub** | Devuelve siempre una respuesta fija, predefinida | Simular la respuesta del banco sin conectarse de verdad a su API |
-| **Mock** | Como el stub, pero además comprueba que se le llamó correctamente | Verificar que `exportar_pdf()` fue llamado exactamente una vez |
-
-**🧪 Ejercicio 6 — Un stub para el banco**
-El dashboard importa movimientos desde un `Sistema bancario` externo (UD5). En `ejercicio6.py`, crea un stub que simule esa importación devolviendo siempre una lista fija de 3 transacciones, sin conectarse a ningún servicio real. Escribe una prueba unitaria que use ese stub.
+**🧪 Ejercicio 5 — De la prueba al pipeline, pasando por el depurador**
+Este ejercicio integra todo el punto 3: (1) escribe una prueba unitaria nueva para una función del dashboard que **todavía tenga un error** (introduce uno tú mismo/a si hace falta); (2) ejecútala y comprueba que falla; (3) usa el depurador (breakpoint + inspección de variables) para localizar la causa exacta; (4) corrige el código; (5) haz `push` y comprueba en la pestaña *Actions* de GitHub que el pipeline de CI ahora pasa en verde. Documenta los 5 pasos en `ejercicio5.md`.
 
 ---
 
 ## 🎯 Reto de clase
 
-Vas a dejar completamente probada la funcionalidad de **presupuestos por categoría** (UD4-UD5) del dashboard de finanzas personales.
+Vas a dejar probada y depurada de extremo a extremo la funcionalidad de **presupuestos por categoría** (UD4-UD5) del dashboard de finanzas personales.
 
 En tu carpeta `UD06`, crea `test_presupuesto.py` y `reto.md` con:
 
 1. **Casos de prueba diseñados** (CA 3b): al menos 4 casos de prueba para la comprobación de presupuesto superado, incluyendo un valor límite.
 2. **Pruebas unitarias automáticas** (CA 3f, 3g): implementadas en `test_presupuesto.py` y verificadas en tu pipeline de CI.
-3. **Un fallo real depurado** (CA 3d, 3e): introduce deliberadamente un error pequeño en el código de presupuestos, localízalo con el depurador (breakpoint + inspección de variables) y documenta el proceso.
-4. **Incidencia documentada** (CA 3h): la incidencia del fallo anterior, con los 4 campos del punto 4.
-5. **Un doble de prueba** (CA 3i): si tu comprobación de presupuesto depende de otra clase (por ejemplo, `Categoria` o `Usuario`), sustitúyela por un stub en al menos una prueba.
+3. **Un fallo real depurado** (CA 3c, 3d, 3e): introduce deliberadamente un error pequeño en el código de presupuestos, localízalo con el depurador (breakpoint + inspección de variables) y documenta el proceso paso a paso.
 
 **Plantilla orientativa para `reto.md`:**
 
 ```markdown
-# Reto — Presupuestos probados de extremo a extremo
+# Reto — Presupuestos probados y depurados
 
 ## 1. Casos de prueba
 | Entrada | Acción | Resultado esperado |
@@ -215,19 +181,10 @@ En tu carpeta `UD06`, crea `test_presupuesto.py` y `reto.md` con:
 ## 3. Depuración de un fallo real
 - Breakpoint colocado en: ___
 - Qué mostró la inspección de variables: ___
-- Línea del error: ___
-
-## 4. Incidencia documentada
-- Pasos para reproducir: ___
-- Resultado esperado / obtenido: ___
-- Entorno: ___
-
-## 5. Doble de prueba
-- Clase sustituida: ___
-- Tipo de doble usado: ___
+- Línea del error y corrección aplicada: ___
 ```
 
-*Variación evaluable*: quien lo prefiera puede aplicar este mismo reto a la funcionalidad de exportación (PDF/CSV) en vez de a los presupuestos, siempre que cubra los 5 puntos anteriores.
+*Variación evaluable*: quien lo prefiera puede aplicar este mismo reto a la funcionalidad de exportación (PDF/CSV) en vez de a los presupuestos, siempre que cubra los 3 puntos anteriores.
 
 ---
 
@@ -235,15 +192,13 @@ En tu carpeta `UD06`, crea `test_presupuesto.py` y `reto.md` con:
 
 ## Resumen de la unidad
 
-**1. Planificación y tipos de pruebas** Planificar antes de probar significa decidir qué se comprueba y cómo se sabrá que es correcto; las pruebas pueden ser funcionales, estructurales o de regresión, y el propio IDE ofrece herramientas integradas para ejecutarlas y depurarlas.
+**1. Planificación y tipos de pruebas** Planificar antes de probar significa decidir qué se comprueba y cómo se sabrá que es correcto; las pruebas pueden ser funcionales, estructurales o de regresión.
 
 **2. Casos de prueba y pruebas de código** Un caso de prueba documenta entrada, acción y resultado esperado; cobertura, valores límite y clases de equivalencia ayudan a diseñar casos de prueba eficaces sin repetir lo redundante.
 
-**3. Pruebas unitarias, automatización y depuración** Las pruebas unitarias comprueban funciones aisladas y se automatizan con el pipeline de CI de UD3; cuando una prueba falla, el depurador permite pausar la ejecución (breakpoints), avanzar paso a paso e inspeccionar (o modificar) variables en tiempo de ejecución — con `print()` como alternativa que nunca falla.
+**3. Pruebas unitarias, automatización y depuración** Las pruebas unitarias comprueban funciones aisladas y se automatizan con el pipeline de CI de UD3; el propio entorno ofrece herramientas de depuración — breakpoints, avance paso a paso e inspección (o modificación) de variables en tiempo de ejecución — con `print()` como alternativa que nunca falla.
 
-**4. Documentación de incidencias** Una incidencia reproducible por otra persona documenta pasos, resultado esperado, resultado obtenido y entorno.
-
-**5. Dobles de prueba** Dummy, stub y mock sustituyen a una dependencia lenta, costosa o inexistente para poder probar un componente de forma aislada.
+**Y lo que continúa en la empresa**: documentar incidencias de forma reproducible (CA 3h) y usar dobles de prueba para aislar componentes (CA 3i) son la continuación natural de lo aprendido aquí — las trabajarás y demostrarás durante tu formación en la empresa.
 
 ---
 
@@ -251,8 +206,8 @@ En tu carpeta `UD06`, crea `test_presupuesto.py` y `reto.md` con:
 
 - Documentación oficial de pytest: https://docs.pytest.org/
 - Depuración en VS Code: https://code.visualstudio.com/docs/editor/debugging
-- Martin Fowler — *Mocks Aren't Stubs* (dobles de prueba, artículo clásico): https://martinfowler.com/articles/mocksArentStubs.html
+- Martin Fowler — *Mocks Aren't Stubs* (dobles de prueba, artículo clásico, útil para cuando lo veas en empresa): https://martinfowler.com/articles/mocksArentStubs.html
 
 ### 🧭 Por qué te va a servir esto de verdad
 
-Escribir código que "funciona a la primera" no es realista en ningún proyecto real — lo que marca la diferencia es la rapidez con la que localizas y confirmas que algo está roto, y esta unidad es exactamente el conjunto de herramientas (pruebas, depurador, dobles) con el que se hace eso todos los días en cualquier equipo de desarrollo.
+Escribir código que "funciona a la primera" no es realista en ningún proyecto real — lo que marca la diferencia es la rapidez con la que localizas y confirmas que algo está roto, y esta unidad es exactamente el conjunto de herramientas (pruebas, depurador, CI) con el que se hace eso todos los días en cualquier equipo de desarrollo.

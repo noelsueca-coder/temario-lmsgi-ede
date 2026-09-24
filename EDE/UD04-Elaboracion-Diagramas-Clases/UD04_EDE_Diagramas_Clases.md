@@ -206,11 +206,8 @@ Trazar un diagrama desde una especificación en texto es el proceso inverso a in
 | 3. Identificar métodos | ¿Qué acciones realiza cada clase? | Verbos asociados a cada sustantivo |
 | 4. Identificar relaciones | ¿Cómo se conectan las clases entre sí? | Verbos que conectan dos sustantivos ("tiene", "pertenece a", "es un tipo de") |
 
-**🧪 Ejercicio 5 — Especificación guiada**
-Se te entregará una especificación breve de un dominio nuevo (por ejemplo, un sistema de reservas). En `ejercicio5.puml`, traza el diagrama de clases completo (clases, atributos, métodos, relaciones y multiplicidades) siguiendo los 4 pasos anteriores.
-
-**🧪 Ejercicio 6 — El dashboard completo**
-Amplía el diagrama del dashboard de finanzas personales (Ejercicios 1-2-4) añadiendo las clases que falten para cubrir: registro de ingresos y gastos, categorías, informes mensuales y exportación (PDF/CSV). El resultado debe usar al menos 4 de los 6 tipos de relación vistos en el punto 2. Guárdalo como `ejercicio6.puml`.
+**🧪 Ejercicio 5 — El dashboard completo**
+Siguiendo los 4 pasos anteriores, amplía el diagrama del dashboard de finanzas personales (Ejercicios 1-2-4) añadiendo las clases que falten para cubrir: registro de ingresos y gastos, categorías, informes mensuales y exportación (PDF/CSV). El resultado debe usar al menos 4 de los 6 tipos de relación vistos en el punto 2. Guárdalo como `ejercicio5.puml`.
 
 ---
 
@@ -231,8 +228,8 @@ class Transaccion:
 
 > 📡 **Por qué importa hoy**: el diagrama deja de ser "un dibujo para el examen" y pasa a ser el punto de partida real del código — el diseño se piensa una vez y se traduce a la estructura del proyecto sin volver a escribirla a mano.
 
-**🧪 Ejercicio 7 — Del diagrama al esqueleto de código**
-A partir de tu diagrama del Ejercicio 6, genera (con la herramienta que uses, o escribiéndolo tú mismo/a siguiendo exactamente el diagrama) el esqueleto de código Python de las clases `Usuario`, `Transaccion` y `Categoria`, con sus atributos tipados y las firmas de sus métodos (sin implementar la lógica interna).
+**🧪 Ejercicio 6 — Del diagrama al esqueleto de código**
+A partir de tu diagrama del Ejercicio 5, genera (con la herramienta que uses, o escribiéndolo tú mismo/a siguiendo exactamente el diagrama) el esqueleto de código Python de las clases `Usuario`, `Transaccion` y `Categoria`, con sus atributos tipados y las firmas de sus métodos (sin implementar la lógica interna).
 
 ---
 
@@ -240,8 +237,8 @@ A partir de tu diagrama del Ejercicio 6, genera (con la herramienta que uses, o 
 
 La **ingeniería inversa** hace el camino contrario: a partir de código ya existente, se genera automáticamente el diagrama de clases que lo documenta. Es habitual al incorporarte a un proyecto sin documentación previa, o para comprobar que el diagrama y el código no se han desincronizado con el tiempo.
 
-**🧪 Ejercicio 8 — Ingeniería inversa del dashboard**
-Toma el código real de tu proyecto del dashboard de finanzas (el que ya tienes de UD1-UD3, no el esqueleto del ejercicio anterior) y genera su diagrama de clases mediante ingeniería inversa (extensión del IDE, o manualmente aplicando el proceso inverso al del punto 5). En `ejercicio8.md`, compara el resultado con el diagrama del Ejercicio 6: ¿coinciden? ¿Qué diferencias encuentras y por qué crees que existen?
+**🧪 Ejercicio 7 — Ingeniería inversa del dashboard**
+Toma el código real de tu proyecto del dashboard de finanzas (el que ya tienes de UD1-UD3, no el esqueleto del ejercicio anterior) y genera su diagrama de clases mediante ingeniería inversa (extensión del IDE, o manualmente aplicando el proceso inverso al del punto 5). En `ejercicio7.md`, compara el resultado con el diagrama del Ejercicio 5: ¿coinciden? ¿Qué diferencias encuentras y por qué crees que existen?
 
 ---
 

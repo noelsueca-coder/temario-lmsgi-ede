@@ -196,9 +196,6 @@ Així, si el pipeline al núvol falla, `./run-tests.sh` demostra exactament el m
 **🧪 Exercici 5 — Pipeline de CI per al dashboard**
 Afig el fitxer `.github/workflows/tests.yml` (amb el contingut del punt 3.2, adaptat al teu projecte) al repositori del dashboard. Fes un commit i comprova en la pestanya *Actions* de GitHub que s'executa. Si encara no tens proves automàtiques, afig almenys una funció senzilla amb una prova mínima (`assert`) perquè el pipeline tinga alguna cosa real a executar. Documenta en `exercici5.md` una captura del resultat (✅ o ❌) i, si alguna cosa va fallar, com ho vas solucionar.
 
-**🧪 Exercici 6 — Diagrama del flux complet**
-En `exercici6.md`, dibuixa (amb text, taula o un diagrama simple) el recorregut complet d'un canvi en el dashboard: directori de treball → staging → commit local → branca → Pull Request → fusió en `main` → disparament automàtic de CI. Assenyala en quin pas intervé cada comanda de Git que has usat en esta unitat.
-
 ---
 
 ## 🎯 Repte de classe

@@ -206,11 +206,8 @@ Traçar un diagrama des d'una especificació en text és el procés invers a int
 | 3. Identificar mètodes | Quines accions realitza cada classe? | Verbs associats a cada substantiu |
 | 4. Identificar relacions | Com es connecten les classes entre si? | Verbs que connecten dos substantius ("té", "pertany a", "és un tipus de") |
 
-**🧪 Exercici 5 — Especificació guiada**
-Se't lliurarà una especificació breu d'un domini nou (per exemple, un sistema de reserves). En `exercici5.puml`, traça el diagrama de classes complet (classes, atributs, mètodes, relacions i multiplicitats) seguint els 4 passos anteriors.
-
-**🧪 Exercici 6 — El dashboard complet**
-Amplia el diagrama del tauler de finances personals (Exercicis 1-2-4) afegint les classes que falten per a cobrir: registre d'ingressos i despeses, categories, informes mensuals i exportació (PDF/CSV). El resultat ha d'usar almenys 4 dels 6 tipus de relació vistos en el punt 2. Guarda'l com `exercici6.puml`.
+**🧪 Exercici 5 — El dashboard complet**
+Seguint els 4 passos anteriors, amplia el diagrama del tauler de finances personals (Exercicis 1-2-4) afegint les classes que falten per a cobrir: registre d'ingressos i despeses, categories, informes mensuals i exportació (PDF/CSV). El resultat ha d'usar almenys 4 dels 6 tipus de relació vistos en el punt 2. Guarda'l com `exercici5.puml`.
 
 ---
 
@@ -231,8 +228,8 @@ class Transaccio:
 
 > 📡 **Per què importa hui**: el diagrama deixa de ser "un dibuix per a l'examen" i passa a ser el punt de partida real del codi — el disseny es pensa una vegada i es tradueix a l'estructura del projecte sense tornar a escriure-la a mà.
 
-**🧪 Exercici 7 — Del diagrama a l'esquelet de codi**
-A partir del teu diagrama de l'Exercici 6, genera (amb la ferramenta que uses, o escrivint-lo tu mateix/a seguint exactament el diagrama) l'esquelet de codi Python de les classes `Usuari`, `Transaccio` i `Categoria`, amb els seus atributs tipats i les firmes dels seus mètodes (sense implementar la lògica interna).
+**🧪 Exercici 6 — Del diagrama a l'esquelet de codi**
+A partir del teu diagrama de l'Exercici 5, genera (amb la ferramenta que uses, o escrivint-lo tu mateix/a seguint exactament el diagrama) l'esquelet de codi Python de les classes `Usuari`, `Transaccio` i `Categoria`, amb els seus atributs tipats i les firmes dels seus mètodes (sense implementar la lògica interna).
 
 ---
 
@@ -240,8 +237,8 @@ A partir del teu diagrama de l'Exercici 6, genera (amb la ferramenta que uses, o
 
 L'**enginyeria inversa** fa el camí contrari: a partir de codi ja existent, es genera automàticament el diagrama de classes que el documenta. És habitual en incorporar-te a un projecte sense documentació prèvia, o per a comprovar que el diagrama i el codi no s'han desincronitzat amb el temps.
 
-**🧪 Exercici 8 — Enginyeria inversa del dashboard**
-Pren el codi real del teu projecte del tauler de finances (el que ja tens d'UD1-UD3, no l'esquelet de l'exercici anterior) i genera el seu diagrama de classes mitjançant enginyeria inversa (extensió de l'IDE, o manualment aplicant el procés invers al del punt 5). En `exercici8.md`, compara el resultat amb el diagrama de l'Exercici 6: coincidixen? Quines diferències trobes i per què creus que existixen?
+**🧪 Exercici 7 — Enginyeria inversa del dashboard**
+Pren el codi real del teu projecte del tauler de finances (el que ja tens d'UD1-UD3, no l'esquelet de l'exercici anterior) i genera el seu diagrama de classes mitjançant enginyeria inversa (extensió de l'IDE, o manualment aplicant el procés invers al del punt 5). En `exercici7.md`, compara el resultat amb el diagrama de l'Exercici 5: coincidixen? Quines diferències trobes i per què creus que existixen?
 
 ---
 
