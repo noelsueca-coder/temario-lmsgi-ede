@@ -145,7 +145,7 @@ Afig açò dins del teu `<body>`, davall del `<p>` que ja tenies:
 <p>Más información en la <a href="https://www.iessvf.es" target="_blank">web del centro</a>.</p>
 ```
 
-- `<ul>` (*unordered list*) per a llistes sense ordre important (amb pics); `<ol>` (*ordered list*) quan l'ordre importa (numerada automàticament). Cada element va dins d'un `<li>` (*list item*).
+- `<ul>` (*unordered list*) per a llistes sense ordre important (amb punts); `<ol>` (*ordered list*) quan l'ordre importa (numerada automàticament). Cada element va dins d'un `<li>` (*list item*).
 - `<a href="...">`: un enllaç **absolut** (`https://...`) apunta a qualsevol lloc d'Internet; un enllaç **relatiu** (per exemple `ficha-alumno.html`, que usareu en el punt 3.3) apunta a un arxiu dins del vostre propi projecte — més recomanable mentre treballeu en local, perquè no depén que l'altre lloc existisca. `target="_blank"` obri l'enllaç en una pestanya nova.
 
 Guarda i recarrega Firefox — comprova que es veuen les dos llistes i que l'enllaç funciona.
