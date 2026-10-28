@@ -325,7 +325,9 @@ En la UD2 ya construisteis páginas con `<div>` y `<span>` — contenedores gen�
 | `<footer>` | Pie de página o de sección — datos de contacto, licencia, enlaces relacionados |
 | `<address>` | Información de contacto del autor — el navegador suele mostrarla en cursiva |
 
-> 📡 **Por qué esto no es solo estética**: en la UD2 (apartado "Para saber más") ya adelantamos que la normativa europea de accesibilidad digital (Directiva (UE) 2019/882) obliga a buena parte de las webs de administraciones y empresas a cumplir criterios WCAG. Usar `<nav>` en vez de un `<div class="nav">` no cambia nada visualmente por defecto, pero sí para un lector de pantalla: anuncia "navegación" en vez de una caja genérica sin significado, exactamente el mismo tipo de detalle que el `alt` de las imágenes o el `<label for>` de los formularios que ya conocéis. También ayuda a que los buscadores entiendan mejor la estructura de la página al indexarla.
+> 💡 `<main>` se usa **una sola vez** por página. `<header>` y `<footer>` sí se pueden repetir: uno para la página y otro dentro de cada `<article>` o `<section>` si hace falta (el título de una noticia, su autor...). `<nav>` y `<aside>` también pueden aparecer varias veces.
+
+> 📡 **Por qué esto no es solo estética**: en la UD2 (apartado "Para saber más") ya adelantamos que la Directiva (UE) 2019/882 (Ley 11/2023 en España) obliga a los servicios de comercio electrónico y otros servicios a consumidores a ser accesibles; como referencia se suelen usar los criterios WCAG. Usar `<nav>` en vez de un `<div class="nav">` no cambia nada visualmente por defecto, pero sí para un lector de pantalla: anuncia "navegación" en vez de una caja genérica sin significado, exactamente el mismo tipo de detalle que el `alt` de las imágenes o el `<label for>` de los formularios que ya conocéis. También ayuda a que los buscadores entiendan mejor la estructura de la página al indexarla.
 
 ⚠️ **No sustituyen a `<div>`/`<span>`, los complementan**: seguid usando `<div>` y `<span>` para agrupar contenido que no encaja en ninguna de estas categorías con significado propio — no hace falta forzar un `<section>` donde solo hace falta una caja para aplicar estilos.
 
@@ -372,7 +374,7 @@ Lo que habéis visto aquí (campos avanzados, validación nativa, semántica) es
 A fecha de este curso (2026-2027), conviene saber:
 
 - **La validación nativa sigue ganando terreno**: cada versión de los navegadores añade nuevos tipos de `<input>` y atributos de validación, reduciendo la necesidad de JavaScript para casos sencillos — es una tendencia activa, no un estándar cerrado desde hace años.
-- **Accesibilidad, cada vez más exigida por ley**: como ya se apuntó en la UD2, la normativa europea (Directiva (UE) 2019/882) obliga a auditar criterios WCAG en webs de administraciones y empresas — un `<label for>` bien asociado o un `<nav>` en vez de un `<div>` son exactamente el tipo de detalle auditado, y los habéis usado ya en esta unidad.
+- **Accesibilidad, cada vez más exigida por ley**: como ya se apuntó en la UD2, la Directiva (UE) 2019/882 (Ley 11/2023 en España) obliga a los servicios de comercio electrónico y otros servicios a consumidores a ser accesibles — un `<label for>` bien asociado o un `<nav>` en vez de un `<div>` son exactamente el tipo de detalle auditado, y los habéis usado ya en esta unidad.
 - **Frameworks de formularios**: en proyectos grandes (sobre todo con JavaScript, que veréis en la UD6) es habitual apoyarse en librerías que gestionan la validación y el envío de formularios de forma más avanzada — pero todas ellas parten exactamente de los atributos HTML nativos vistos aquí, no los sustituyen.
 
 - MDN — Formularios HTML: https://developer.mozilla.org/es/docs/Learn/Forms
